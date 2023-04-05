@@ -4,7 +4,7 @@ import Book from "../../models/book.js";
 const getAll = async () => {
     try{
         let books = await Book.findAll({
-            attributes: ["idbook", "title", "type", "writer", "synopsis", "ISBN", "book_cover"],
+            attributes: ["idbook", "title","book_cover", "writer", /* "synopsis", "ISBN", */"type" ]
             });
             return [0, books];
         } catch (error) {
@@ -16,7 +16,7 @@ const getAll = async () => {
 const getById = async (id) => {
      try{
          let book = await Book.findByPk(id, {
-               attributes: ["idbook", "title", "type", "writer", "synopsis", "ISBN", "book_cover"],
+               attributes: ["idbook", "title","book_cover", "writer", /* "synopsis", "ISBN", */"type" ]
             
                 });
                 return [0, book];

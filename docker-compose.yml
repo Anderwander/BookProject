@@ -8,7 +8,7 @@ services:
       MYSQL_ROOT_PASSWORD: mi-contraseña 
       MYSQL_DATABASE: bookproject
     ports:
-      - "3311:3306" # se puede acceder tambine sin la red
+      - "3315:3306" # se puede acceder tambine sin la red
     volumes:
       - "./docker/mysql/mysql.cnf:/etc/mysql/config.d/my.cnf"
       - "./docker/mysql/bookproject.sql:/docker-entrypoint-initdb.d/1bookproject.sql"  #se ejecuta al principio

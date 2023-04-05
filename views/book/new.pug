@@ -4,26 +4,26 @@ block content
     h2 Crear un libro
     if error
         p=error
-    form(action="/books" method="POST")
+    form(action="/books" method="POST", enctype="multipart/form-data")
         label(for="title") Titulo
-        input(type="text" name="title" id="title")
-        br
-        label(for="type") Genero
-        input(type="text" name="type" id="type")
+        input(type="text" name="title" id="title" required)
         br
         label(for="writer") Autor/a
-        input(type="text" name="writer" id="writer" )
-        br
-        label(for="synopsis") Sinopsis 
-        input(type="text" name="synopsis" id="synopsis")
-        br
-        label(for="ISBN") ISBN 
-        input(type="number" name="ISBN" id="ISBN")
+        input(type="text" name="writer" id="writer" required)
         br
         label(for="book_cover") Portada 
         input(type="file" name="book_cover" id="book_cover")
         br
-        input(type="hidden", name ="password", value="mi-contraseña")
         input(type="submit", value="Añadir libro")
     a(href="/books")
         button Volver 
+        //-label(for="synopsis") Sinopsis 
+        //-input(type="text" name="synopsis" id="synopsis" required)
+        //-br
+        //-label(for="ISBN") ISBN 
+        //- input(type="number" name="ISBN" id="ISBN" required)
+        //-br
+        //-label(for="type") Genero
+        //-input(type="text" name="type" id="type" required)
+        //-br
+        //-br

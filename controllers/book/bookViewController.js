@@ -54,12 +54,12 @@ if(results[0] === 1 || results[1] === []) {
 
 const create = async (req,res) => {
         let data ={
-                book_cover: req.body.book_cover === "" ? null : req.body.name,
+                book_cover: req.body.book_cover === "" ? null : req.body.book_cover,
                 title: req.body.title == "" ? null : req.body.title,
-                type: req.body.type == "" ? null : req.body.type,
                 writer: req.body.writer == "" ? null : req.body.writer,
-                synopsis: req.body.synopsis == 0 ? null : req.body.synopsis,
-                ISBN: req.body.ISBN == 0 ? null : req.body.ISBN,
+               type: req.body.type == "" ? null : req.body.type,
+                 /* synopsis: req.body.synopsis == 0 ? null : req.body.synopsis,
+                ISBN: req.body.ISBN == 0 ? null : req.body.ISBN, */
             }
     
         let result = await bookController.create(data);
@@ -88,12 +88,12 @@ const updateForm = async (req,res) => {
 
 const update = async (req,res) => {
     let data ={
-        book_cover: req.body.book_cover === "" ? null : req.body.name,
-        title: req.body.title == "" ? null : req.body.title,
-        type: req.body.type == "" ? null : req.body.type,
-        writer: req.body.writer == "" ? null : req.body.writer,
-        synopsis: req.body.synopsis == 0 ? null : req.body.synopsis,
-        ISBN: req.body.ISBN == 0 ? null : req.body.ISBN,
+        book_cover: req.body.book_cover === "" ? null : req.body.book_cover,
+                title: req.body.title == "" ? null : req.body.title,
+                writer: req.body.writer == "" ? null : req.body.writer,
+                 type: req.body.type == "" ? null : req.body.type,
+                /*synopsis: req.body.synopsis == 0 ? null : req.body.synopsis,
+                ISBN: req.body.ISBN == 0 ? null : req.body.ISBN, */
     }
         let idbook=req.params.id;
         let result = await bookController.update(data,idbook);

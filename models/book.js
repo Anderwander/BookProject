@@ -9,7 +9,7 @@ const Book = connection.define("book",{
     },
     book_cover:{
         type: Sequelize.STRING(45),
-        allowNull: false
+        allowNull: true,
     },
     title: {
         type: Sequelize.STRING(100),
@@ -18,20 +18,20 @@ const Book = connection.define("book",{
     },
     type: {
         type: Sequelize.STRING(45),
-        allowNull: false
+        allowNull: true
     },
     writer: {
         type: Sequelize.STRING(45),
         allowNull: false,
     },
-    synopsis: {
+    /* synopsis: {
         type: Sequelize.STRING(300),
         allowNull: false,
     },
     ISBN:{
         type: Sequelize.BIGINT(20),
         allowNull: false
-    },
+    }, */
 },
 {
 

@@ -1,25 +1,32 @@
 
 import User from "../../models/user.js";
 import bcrypt from "bcrypt";
+import Usersql from "../../models/usersql.js";
 
 
 // crear usuario
 const create = async(req,res) => {
    try{
     const hashedPassword = await bcrypt.hash(req.body.password,10);
+    const username = req.body.username.toLowerCase();
     let data= {
-    username:  req.body.username.toLowerCase(),
+    username: username,
     password: hashedPassword,
     email: req.body.email,
     role: "user",
     }
 
     let user = await User.create(data);
+    let userslq= await Usersql.create({username});
     res.redirect("/login");
    } catch (error){
     res.redirect("/register?error="+error.message);
    }
 }
+
+
+
+
 
 // login
 const login = async (req,res) => {

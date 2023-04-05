@@ -5,22 +5,24 @@ block content
     h1 Libros
         table(class="table table.striped", id="books")
             thead 
-                th Titulo 
-                th Genero 
-                th Autor
-                th Sinopsis 
-                th ISBN
                 th Portada
+                th Titulo 
+                th Autor
+                //-th Sinopsis 
+                //-th ISBN
+                //-th Genero 
+                
             tbody 
                 each book in books 
                     tr
                         td
-                            a(href=`/books/book/${book.idbook}`)= book.title 
-                        td= book.type 
+                            a(href=`/books/book/${book.idbook}`)= book.book_cover
+                        td= book.title 
                         td= book.writer
-                        td= book.synopsis 
-                        td= book.ISBN 
-                        td= book.book_cover
+                        //-td= book.synopsis 
+                        //-td= book.ISBN 
+                        //-td= book.type
+                        
                         td 
                             // if auth && auth.role == "admin"
                             form(action=`/books/edit/${book.idbook}`, method="get")

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import {isAuthorized,isAdmin} from "../../middlewares/auth.js";
 import bookController from "../../controllers/book/bookViewController.js";
-
+import upload from "../../middlewares/multer.js";
 
 const router = Router();
 
@@ -20,7 +20,7 @@ router.get("/new", isAdmin, (req,res) => {
 });
 
 // crear un nuego libro
-router.post("/", isAuthorized, (req,res) => {
+router.post("/", [isAuthorized, upload.single("book_cover")], (req,res) => {
     bookController.create(req,res);
     //res.send("Crear un nuevo libro");
 });
