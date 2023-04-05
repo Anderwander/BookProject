@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1= title 
+    p BookTinder 
+        strong Libros 
+    form(action="/search", method="get" id="search-form")
+        label(for="search-text")
+        input(type="text", name="search-text", id="search-text", placeholder="buscar libro")
+        input(type="submit", value="buscar")
+    img(src= "img/book.png", alt="")
+    script(src="search.js")

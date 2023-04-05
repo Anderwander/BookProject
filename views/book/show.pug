@@ -1,0 +1,11 @@
+extend ../layout
+
+block content
+    h1= book.title 
+    h2= book.writer
+    h3= book.type
+    h4= book.synopsis
+    h4= book.ISBN
+    img= book.book_cover
+    a(href="/books")
+        button Volver 
