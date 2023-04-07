@@ -1,4 +1,4 @@
-INSERT INTO books (title, synopsis, writer, type, ISBN) 
+INSERT INTO books (title, synopsis, writer, type, ISBN, book_cover) 
 VALUES 
 ("Cien años de soledad", "Una saga familiar en un pueblo aislado de Colombia, llena de misterios y tragedias", "Gabriel García Márquez", "Realismo mágico", "9780307474728"), 
 ("1984", "Una distopía que reflexiona sobre el poder y la libertad individual", "George Orwell", "Ciencia ficción", "9780451524935"), 

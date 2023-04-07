@@ -1,28 +1,22 @@
-import {Router} from "express";
-import userControler from "../../controllers/user/userControler.js";
+import { Router } from "express";
+import userController from "../../controllers/user/userController.js";
 
-const router = Router ();
+const router = Router();
 
 router.get("/", (req, res) => {
-    userControler.getAll(req,res);
-}
-);
-
+  userController.getAll(req, res);
+});
 
 router.post("/", (req, res) => {
-    userControler.create(req,res);
-}
-);
+  userController.create(req, res);
+});
 
 router.get("/login", (req, res) => {
-    userControler.loginForm(req,res);
-}
-);
+  userController.loginForm(req, res);
+});
 
 router.post("/login", (req, res) => {
-    userControler.login(req,res);
-}
-);
-
+  userController.login(req, res);
+});
 
 export default router;

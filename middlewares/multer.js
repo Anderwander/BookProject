@@ -1,3 +1,8 @@
+// Middleware for uploading files
+// files are stored in public/uploads/<user_id>/ folder and are named as <timestamp>.<file_extension>
+// file extension is extracted from the file's mimetype
+// file is stored in req.file
+
 import multer from 'multer';
 import path  from 'path';
 

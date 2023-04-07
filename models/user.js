@@ -1,3 +1,7 @@
+/*
+Mongoose model for User
+*/
+
 import mongoose from "../config/mongoose.js";
 import bcrypt from "bcrypt";
 
@@ -20,7 +24,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         enum: ["admin", "user"]
-    }
+    },
+    avatar: {
+        type: String,
+        required: false
+    },
 });
 
 // add verification methods to userSchema

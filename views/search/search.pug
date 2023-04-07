@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1 Search results
+  if !results.length
+    ul
+      each book in results
+        li= book.title

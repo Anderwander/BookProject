@@ -1,6 +1,30 @@
 import Book from "../../models/book.js";
  
 
+
+
+const search = async (query) => {
+    try {
+      const results = await Book.findAll({
+        where: {
+            [Op.or]: [
+              { title: { [Op.like]: `%${query}%` } },
+              { writer: { [Op.like]: `%${query}%` } }
+            ]
+          }
+        });
+      return [0, results]; // Devuelve un arreglo con un código de éxito (0) y los resultados de búsqueda
+    } catch (error) {
+      return [1, error]; // Devuelve un arreglo con un código de error (1) y el error producido
+    }
+  };
+  
+
+
+
+
+
+
 const getAll = async () => {
     try{
         let books = await Book.findAll({
@@ -63,6 +87,7 @@ const deletes = async (idbook) => {
 
 
 export default {
+    search,
     getAll,
     getById,
     create,

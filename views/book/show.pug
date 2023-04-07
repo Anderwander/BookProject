@@ -1,4 +1,4 @@
-extend ../layout
+extends ../layout
 
 block content
     h1= book.title 
@@ -7,5 +7,7 @@ block content
     //-h4= book.synopsis
     //-h4= book.ISBN
     img= book.book_cover
+    //-botón de añadir a favoritos
+    input(type="submit", value="Añadir favoritos")
     a(href="/books")
-        button Volver 
+        button Volver a libros
