@@ -28,10 +28,10 @@ const Book = connection.define("book",{
         type: Sequelize.STRING(300),
         allowNull: false,
     },
-    ISBN:{
+    /* ISBN:{
         type: Sequelize.BIGINT(20),
         allowNull: false
-    },
+    },*/
 },
 {
 

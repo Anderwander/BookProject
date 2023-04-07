@@ -1,3 +1,17 @@
 extends ../layout 
 
 block content
+    h1 Libros
+            table(class="table table.striped", id="books")
+                thead 
+                    th Portada
+                    th Titulo 
+                    th Autor 
+                tbody 
+                    each book in books 
+                        tr
+                            td
+                                a(href=`/books/book/${book.idbook}`)
+                                    img(src=`/img/${book.book_cover}`)
+                            td= book.title 
+                            td= book.writer

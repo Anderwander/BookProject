@@ -2,8 +2,10 @@ import { Router } from "express";
 import bookRouter from "./book.js";
 import userRouter from "./user.js";
 import authRouter from "./auth.js";
+import searchRouter from "./search.js";
 import { isAuthorized,isAdmin } from "../../middlewares/auth.js";
 //import lendRouter from "./lend.js";
+
 
 const router = Router();
 
@@ -15,8 +17,6 @@ router.get("/", (req, res) => {
   const auth = req.user;
   res.render("index", { auth });
 });
-router.get('/search', async (req, res) => {
-  // código para manejar la solicitud GET a la URL "/search"
-});
+router.use("/search", searchRouter);
 
 export default router;

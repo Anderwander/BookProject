@@ -25,11 +25,11 @@ block content
                         //-td= book.type
                         td 
                             if auth && auth.role == "admin"
-                            form(action=`/books/edit/${book.idbook}`, method="get")
-                                input(type="submit", name="btn edit", value="Editar")
-                            form(action=`/books/delete/${book.idbook}`, method="post")
-                                input(type="hidden", name="password", value="mi-contraseña")
-                                input(type="submit", value="Eliminar")
+                                form(action=`/books/edit/${book.idbook}`, method="get")
+                                    input(type="submit", name="btn edit", value="Editar")
+                                form(action=`/books/delete/${book.idbook}`, method="post")
+                                    input(type="hidden", name="password", value="mi-contraseña")
+                                    input(type="submit", value="Eliminar")
                                 
         a(href="/books/new")
             button Añadir un libro 

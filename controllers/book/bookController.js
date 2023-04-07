@@ -1,9 +1,7 @@
 import Book from "../../models/book.js";
  
 
-
-
-const search = async (query) => {
+const searchBooks = async (query) => {
     try {
       const results = await Book.findAll({
         where: {
@@ -28,7 +26,7 @@ const search = async (query) => {
 const getAll = async () => {
     try{
         let books = await Book.findAll({
-            attributes: ["idbook", "title","book_cover", "writer", "synopsis", "ISBN", "type" ]
+            attributes: ["idbook", "title","book_cover", "writer", "synopsis", /*"ISBN",*/ "type" ]
             });
             return [0, books];
         } catch (error) {
@@ -40,7 +38,7 @@ const getAll = async () => {
 const getById = async (id) => {
      try{
          let book = await Book.findByPk(id, {
-               attributes: ["idbook", "title","book_cover", "writer", "synopsis", "ISBN","type" ]
+               attributes: ["idbook", "title","book_cover", "writer", "synopsis", /*"ISBN",*/"type" ]
             
                 });
                 return [0, book];
@@ -87,7 +85,7 @@ const deletes = async (idbook) => {
 
 
 export default {
-    search,
+    searchBooks,
     getAll,
     getById,
     create,
