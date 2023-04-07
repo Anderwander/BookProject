@@ -24,14 +24,14 @@ const Book = connection.define("book",{
         type: Sequelize.STRING(45),
         allowNull: false,
     },
-    /* synopsis: {
+    synopsis: {
         type: Sequelize.STRING(300),
         allowNull: false,
     },
     ISBN:{
         type: Sequelize.BIGINT(20),
         allowNull: false
-    }, */
+    },
 },
 {
 

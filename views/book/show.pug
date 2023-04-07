@@ -3,11 +3,10 @@ extends ../layout
 block content
     h1= book.title 
     h2= book.writer
-    //-h3= book.type
-    //-h4= book.synopsis
+    img(src=`/img/${book.book_cover}`)
+    p= book.synopsis
+    h4= book.type
     //-h4= book.ISBN
-    img= book.book_cover
-    //-botón de añadir a favoritos
     input(type="submit", value="Añadir favoritos")
     a(href="/books")
         button Volver a libros
