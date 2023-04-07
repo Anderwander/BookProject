@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+    h1= book.title 
+    h2= book.writer
+    img(src=`/img/${book.book_cover}`)
+    p= book.synopsis
+    h4= book.type
+    //-h4= book.ISBN
+    input(type="submit", value="Añadir favoritos")
+    a(href="/books")
+        button Volver a libros

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Buscador de libros</title>
+</head>
+
+<body>
+  <h1>Buscador de libros</h1>
+  <form id="search-form">
+    <label for="search-text"></label>
+    <input type="text" id="search-text" name="search-text">
+    <button type="submit">Buscar</button>
+  </form>
+  <!--Tabla con id para el css que contenga todos los elementos del libro-->
+  <table id="results-table">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Género</th>
+        <th>Sinopsis</th>
+        <th>ISBN</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <script src="search.js"></script>
+</body>
+</html>

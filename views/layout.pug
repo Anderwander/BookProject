@@ -1,0 +1,30 @@
+hmtl
+    head 
+        title Book Tinder 
+        link(rel="stylesheet", href="/css/style.css")
+        link(rel="stylesheet", href="/css/style2.css")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+body 
+    header
+        block nav
+            nav   
+                ul 
+                    a(href="/") 
+                        li Home
+                    a(href="/books") 
+                        li libros
+                    if auth
+                        a(href="/users") 
+                            li Usuarios
+                        a(href="/logout") 
+                            li Logout
+                    else 
+                            a(href="/login") 
+                                li login
+                            a(href="/register") 
+                                li Registrarse
+                            
+
+    main
+        block content
+    footer

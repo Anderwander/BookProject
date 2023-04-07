@@ -1,0 +1,27 @@
+extend ../layout
+
+block content
+    h1 Editar un libro
+    form(action=`/books/edit/${book.idbook}` method="POST")
+        label(for="book_cover") Portada 
+        input(type="file" name="book_cover" id="book_cover" value=book.book_cover)
+        br
+        label(for="title") Titulo
+        input(type="text" name="title" id="title" value=book.title)
+        br
+        //-label(for="type") Genero
+         //-input(type="text" name="type" id="type" value=book.type)
+         //-br
+        label(for="writer") Autor
+        input(type="text" name="writer" id="writer" value=book.writer)
+        br
+         //-label(for="synopsis") Sinopsis 
+         //-input(type="text" name="synopsis" id="synopsis" value=book.synopsis)
+         //-br
+        //- label(for="ISBN") ISBN  
+        //- input(type="number" name="ISBN" id="ISBN" value=book.ISBN)
+        //- br
+        input(type="hidden", name ="password", value="mi-contraseña")
+        input(type="submit", class="btn edit", value="guardar")
+    a(href="/books/update")
+        button Volver 
