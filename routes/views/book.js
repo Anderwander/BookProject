@@ -5,6 +5,7 @@ import upload from "../../middlewares/multer.js";
 
 const router = Router();
 
+
 router.get("/", isAuthorized, (req, res) => {
   bookController.getAll(req, res);
   // res.send("Mostrar todos los libros");
@@ -15,7 +16,7 @@ router.get("/book/:id", (req, res) => {
   // res.send("Mostrar un libro con id " + req.params.id);
 });
 
-router.get("/new", isAdmin, (req, res) => {
+router.get("/new", isAuthorized, (req, res) => {
     bookController.createForm(req, res);
   }
 );
@@ -29,7 +30,7 @@ router.post("/", [ isAuthorized, upload.single("book_cover")],(req, res) => {
 
 // editar un libro
 
-router.get("/edit/:id", (req, res) => {
+router.get("/edit/:id", isAdmin, (req, res) => {
   bookController.updateForm(req, res);
   // res.send("Modificar un libro con id " + req.params.id);
 });

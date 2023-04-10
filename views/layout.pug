@@ -2,8 +2,10 @@ hmtl
     head 
         title Book Tinder 
         link(rel="stylesheet", href="/css/style.css")
-        link(rel="stylesheet", href="/css/style2.css")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="preconnect", href="https://fonts.googleapis.com")
+        link(rel="preconnect", href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet")
 body 
     header
         block nav
@@ -27,4 +29,36 @@ body
 
     main
         block content
-    footer
+footer
+    ul#enlaces
+        li
+        a(href="/views/aboutus") About Us
+        li
+        a(href="/formulario") Contacto
+        li
+        a(href="/privacidad") Politica de privacidad
+        br
+    #center
+        a(href="#")
+        img(src="img/logofooter.jpg", alt="Logo", width="100", height="100")
+    ul#redes
+        li
+        a(href="#")
+            img(src="img/fb.png", id="iconos", alt="Facebook")
+        br
+        li
+        a(href="#")
+            img(src="img/inst.png", id="iconos", alt="Instagram")
+        br
+        li
+        a(href="#")
+            img(src="img/lin.png", id="iconos", alt="LinkedIn")
+        br
+        li
+        a(href="#")
+            img(src="img/tw.png", id="iconos", alt="Twitter")
+        br
+    br
+    | Booktinder.Copyright © 2023
+    br
+

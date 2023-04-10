@@ -1,13 +1,13 @@
 extends ../layout
 
 block content 
-    //-link(rel="stylesheet", href="/style.css")
+    link(rel="stylesheet", href="/style.css")
     h1 Libros
         table(class="table table.striped", id="books")
             thead 
-                th Portada
-                th Titulo 
-                th Autor
+                //-th Portada
+                //-th Titulo 
+                //-th Autor
                 //-th Sinopsis 
                 //-th ISBN
                 //-th Genero 
@@ -17,19 +17,19 @@ block content
                     tr
                         td
                             a(href=`/books/book/${book.idbook}`)
-                                img(src=`/img/${book.book_cover}`)
-                        td= book.title 
-                        td= book.writer
+                                img(src=`/img/${book.book_cover}`, class="book-cover")
+                        //-td= book.title 
+                        //-td= book.writer
                         //-td= book.synopsis 
                         //-td= book.ISBN 
                         //-td= book.type
                         td 
                             if auth && auth.role == "admin"
-                            form(action=`/books/edit/${book.idbook}`, method="get")
-                                input(type="submit", name="btn edit", value="Editar")
-                            form(action=`/books/delete/${book.idbook}`, method="post")
-                                input(type="hidden", name="password", value="mi-contraseña")
-                                input(type="submit", value="Eliminar")
+                                form(action=`/books/edit/${book.idbook}`, method="get")
+                                    input(type="submit", name="btn edit", value="Editar", class="btn")
+                                form(action=`/books/delete/${book.idbook}`, method="post")
+                                    input(type="hidden", name="password", value="mi-contraseña")
+                                    input(type="submit", value="Eliminar", class="btn")
                                 
         a(href="/books/new")
             button Añadir un libro 

@@ -5,31 +5,29 @@ block content
     h1 Usuarios
         table(class="table table-striped", id="users")
             thead 
-                th Username
-                th Mail
-                th Rol
-                th Avatar
-                if auth && auth.role == "admin"
+                //-th Avatar
+                //-th Username
+                //-th Mail
+                //-th Rol
+                //-if auth && auth.role == "admin"
                     th Acciones
             tbody 
                 each user in users 
                     tr
-                        //-td
-                            //-Aquí iría el avatar
-                        td= user.username
-                        td= user.email
-                        td= user.role
                         td 
                             if user.avatar
                                 img(src=`${user.avatar}`, alt="avatar", class="avatar")
                             else
                                 img(src="/img/default-avatar.jpg", alt="avatar", class="avatar")
+                        td= user.username
+                        td= user.email
+                        td= user.role
                         td 
                             if auth && auth.role == "admin"
                                 section(class="actions")
                                 
-                                form(action=`/users/edit/${user.iduser}`, method="get")
-                                    input(type="submit", name="btn edit", value="Editar")
+                                form(action=`/users/user/edit/${user.iduser}`, method="get")
+                                    input(type="submit", name="btn edit", value="Editar", class="btn")
                                 form(action=`/users/delete/${user.iduser}`, method="post")
                                     input(type="hidden", name="password", value="mi-contraseña")
-                                    input(type="submit", value="Eliminar")
+                                    input(type="submit", value="Eliminar", class="btn")

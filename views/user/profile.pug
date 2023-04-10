@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+    h1= user.name + "'s favorite books"
+    each book in user.favoriteBooks
+        div
+            h2= book.title 
+            h3= book.writer
+            img(src=`/img/${book.book_cover}`)
+            p= book.synopsis
+            h4= book.type
+    a(href="/books")
+        button Volver a libros

@@ -1,6 +1,7 @@
 extend ../layout
 
 block content
+    link(rel="stylesheet", href="/style.css")
     h1 Editar un libro
     form(action=`/books/edit/${book.idbook}` method="POST")
         label(for="book_cover") Portada 
@@ -22,6 +23,6 @@ block content
         //- input(type="number" name="ISBN" id="ISBN" value=book.ISBN)
         //- br
         input(type="hidden", name ="password", value="mi-contraseña")
-        input(type="submit", class="btn edit", value="guardar")
+        input(type="submit", class="btn", value="guardar")
     a(href="/books/update")
         button Volver 
