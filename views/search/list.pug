@@ -1,59 +1,22 @@
 extends ../layout
 
 block content
-  h1 Resultados de la búsqueda
+  link(rel="stylesheet", href="/style.css")
+  h1 Resultados para "#{query}"
     if search.length === 0
       p No se encontraron libros
     else
       table
         thead
           tr
-            th Título
-            th Escritor
-           
-
+            //-th Título
+            //-th Escritor
+            //-th Portada
         tbody
           each book in search
             tr
-              td= book.title
-              td= book.writer
-              
-
-    //- Agregar una sección para mostrar los resultados de la búsqueda
-  block results
-    h2 Resultados para "#{query}"
-    table
-      thead
-        tr
-          th Título
-          th Escritor
-          
-
-      tbody
-        each book in search
-          tr
-            td= book.title
-            td= book.writer
-            
-
-
-
-
-
-  //-block content
-    h1 Resultados de la búsqueda
-
-    if books.length === 0
-      p No se encontraron libros
-    else
-      table
-        thead
-          tr
-            th Título
-            th Autor
-        tbody
-          each book in books
-            tr
-              td= book.title
-              td= book.writer
-              td= book.book_cover
+              //-td= book.title
+              //-td= book.writer 
+              td
+                a(href=`/books/book/${book.idbook}`)
+                  img(src=`/img/${book.book_cover}`, class="book-cover")

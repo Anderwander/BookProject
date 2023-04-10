@@ -7,6 +7,39 @@ block content
     p= book.synopsis
     h4= book.type
     //-h4= book.ISBN
-    input(type="submit", value="Añadir favoritos")
+    form(action=`/users/${iduser}/favs/${idbook}/add/`, method="post")
+        input(type='hidden', name='idbook', value=`${idbook}`)
+        button(type="submit", class="btn") Agregar a favoritos
     a(href="/books")
         button Volver a libros
+
+
+
+    //-    form(method='post', action=`/users/${userId}/favs`)
+        select(name='bookId')
+            each book in books
+            option(value=book._id)= book.title
+        button(type='submit') Agregar a favoritos
+
+//- lo que habia antes 
+        form(action=`/books/favs/${book.idbook}`, method="post")
+            input(type="submit", value="Añadir favoritos")
+
+
+ //-Vista para borrar un libro de la lista de favoritos de un usuario:
+        ul
+            each book in books
+                li
+                h3= book.title
+                form(method='post', action=`/users/${userId}/favorites/${book._id}`)
+                    input(type='hidden', name='_method', value='DELETE')
+                    button(type='submit') Eliminar de favoritos
+
+
+                   //- Vista para ver los libros favoritos de un usuario:
+
+                        pug
+                        Copy code
+                        ul
+                        each book in books
+                            li= book.title

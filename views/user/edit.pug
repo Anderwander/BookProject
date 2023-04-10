@@ -1,12 +1,13 @@
 extends ../layout
 
 block content
+    link(rel="stylesheet", href="/style.css")
     h1 Editar usuario
     if userToEdit.avatar
             img(src=`${userToEdit.avatar}`, alt="avatar", class="avatar")
     else
             img(src="/img/default-avatar.jpg", alt="avatar", class="avatar")
-    form(action=`/users/user/edit/${userToEdit._id}`, method="post", enctype="multipart/form-data")
+    form(action=`/user/edit/${userToEdit._id}`, method="post", enctype="multipart/form-data")
         label(for="username") Usuario
         input(type="text", name="username", id="username", value=`${userToEdit.username}`, required)
         br
@@ -26,6 +27,6 @@ block content
 
         input(type="file", name="image", id="image")
         br
-        input(type="submit", class="btn edit", value="Editar")
+        input(type="submit", class="btn", value="Editar")
     a(href="/users")
         button(class="btn") Volver

@@ -5,6 +5,7 @@ import authRouter from "./auth.js";
 import searchRouter from "./search.js";
 import { isAuthorized,isAdmin } from "../../middlewares/auth.js";
 //import lendRouter from "./lend.js";
+import favsRouter from "./favs.js";
 
 
 const router = Router();
@@ -18,5 +19,11 @@ router.get("/", (req, res) => {
   res.render("index", { auth });
 });
 router.use("/search", searchRouter);
+router.use("/favs", favsRouter);
+
+
 
 export default router;
+
+
+

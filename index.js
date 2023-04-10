@@ -4,7 +4,9 @@ import routerView from "./routes/views/router.js"
 import express_session from "express-session";
 import passport from "./config/passport.js";
 
+
 const app = express();
+
 
 app.use(express.static("public")); //carpeta publica para meter el css lo del front
 app.use(express_session({ 

@@ -19,7 +19,7 @@ ul li {
     color: white;
 }
 .btn{
-    background-color: rgb(218, 105, 53);
+    background-color: #146c94;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -53,13 +53,67 @@ select, option{
 }
 img{
     position: relative;
-    max-width: 80%;
+    max-width: 100%;
     border-radius: 10px;
+
 }
 .avatar {
-    width: 80px;
-    height: 60px;
+    width: 40%;
+    height: 40%;
 }
 
+td {
+    text-align: center;
+    display: flex; /* or inline-flex */
+    flex-wrap: wrap;
+}
+
+tbody {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    grid-gap: 10px;
+  }
+  
+.book-cover {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (min-width: 768px) {
+    .book-cover {
+        width: 68%;
+        height: auto;
+      }
+      img{
+        position: relative;
+        max-width: 68%;
+        border-radius: 10px;
+    
+    }
+  }
 
 
+#search-form{ 
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+    max-width: 360px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,2), 0 5px 5 px 0 rgba(0,0,0,0.2);
+}
+
+input{
+    background-color: #F2F2F2;
+    width:100%;
+    border:0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}

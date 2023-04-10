@@ -29,7 +29,7 @@ router.get("/user/edit/:id",isAdmin, (req, res) => {
 )
  */
 // crear un nuego user
-router.post("/",[ isAuthorized,  upload.single("user_cover")],(req, res) => {
+router.post("/",(req, res) => {
     userController.create(req, res);
     //res.send("Crear un nuevo user");
   }
@@ -40,12 +40,11 @@ router.post("/user/edit/:id", [isAdmin,upload.single("image")], (req,res) =>{
   userController.update(req,res);
   //res.send("Modificar un equipo con id "+req.params.id);
 }
-)
+);
 
-// eliminar un user delete
-router.delete("/user/:id", isAdmin, (req, res) => {
-  userController.deletes(req, res);
-  // res.send("Eliminar un user con id " + req.params.id);
+router.delete("/user/:id", isAdmin, (req,res) => {
+    userController.deletes(req,res);
+    //res.send("Eliminar un equipo con id "+req.params.id);
 });
 
 export default router;

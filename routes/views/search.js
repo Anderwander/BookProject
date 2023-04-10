@@ -4,8 +4,6 @@ import upload from "../../middlewares/multer.js";
 import searchController from "../../controllers/search/searchController.js";
 
 
-
-
 const router = Router();
 
 router.get("/", (req, res) => {

@@ -1,6 +1,7 @@
 extend ../layout
 
 block content
+    link(rel="stylesheet", href="/style.css")
     h2 Crear un libro
     if error
         p=error
@@ -17,7 +18,7 @@ block content
         label(for="book_cover") Portada 
         input(type="file" name="book_cover" id="book_cover")
         br
-        input(type="submit", value="Añadir libro")
+        input(type="submit", value="Añadir libro", class="btn")
     a(href="/books")
         button Volver 
         //-label(for="synopsis") Sinopsis 

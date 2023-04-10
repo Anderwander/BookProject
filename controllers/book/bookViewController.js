@@ -1,33 +1,5 @@
 import bookController from "./bookController.js";
-
-
-// Controlador para la búsqueda de libros
-const searchBooks = async (req, res) => {
-  const { query } = req.query['search-text'];
-  let result = await bookController.search(query);
-  if (result[0] === 0) {
-    
-    res.render("book/search",{books: result[1]} );
-  } else  {
-    console.error(error);
-    res.status(500).send({
-      message: error.message || 'Some error occurred while retrieving books.'
-    });
-  }
-};
  
- 
-
-
- 
-
-
- 
-      
-
-
-
-
 
 
 const getAll = async (req, res) => {
@@ -130,7 +102,7 @@ const deletes = async (req, res) => {
 };
 
 export default {
-  searchBooks,
+
   getAll,
   getById,
   createForm,

@@ -1,5 +1,7 @@
 import connection from "../config/orm.js";
 import Sequelize from "sequelize";
+import Wish from "./users_has_wishes.js";
+
 
 const Book = connection.define("book",{
     idbook:{
@@ -38,4 +40,10 @@ const Book = connection.define("book",{
     timestamps: false
 });
 
+
+  
+ 
+
+
 export default Book;
+

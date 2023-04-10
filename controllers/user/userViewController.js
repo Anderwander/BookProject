@@ -34,21 +34,20 @@ const getById = async (req, res) => {
 };
 
 const updateForm = async (req, res) => {
-  let iduser = req.params.id;
+  let iduser = req.params._id;
   let result = await userController.getById(iduser);
-
   const user = result[1];
-
   res.render("user/edit", { user: user });
 };
 
 const update = async (req, res) => {
   let data = {
+    avatar: req.body.avatar === "" ? null : req.body.avatar,
     username: req.body.username === "" ? null : req.body.username,
     password: req.body.hashedPassword === "" ? null : req.body.hashedPassword,
     email: req.body.email === "" ? null : req.body.email,
   };
-  let iduser = req.params.id;
+  let iduser = req.params._id;
   let result = await userController.update(data, iduser);
   if (result[0] === 0) {
     res.redirect("/users");

@@ -1,12 +1,12 @@
 extends layout
 
 block content
+    link(rel="stylesheet", href="/style.css")   
     h1= title 
-    p BookTinder 
-        strong Libros 
+    strong BookTinder 
+    p Para los amantes de a lectura 
     form(action="/search", method="get" id="search-form")
         label(for="search-text")
         input(type="text", name="search-text", id="search-text", placeholder="buscar libro")
-        input(type="submit", value="buscar")
+        input(type="submit", value="buscar", class="btn")
     img(src= "img/book.png", alt="")
-    script(src="search.js")

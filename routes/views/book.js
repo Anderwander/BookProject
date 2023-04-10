@@ -5,6 +5,7 @@ import upload from "../../middlewares/multer.js";
 
 const router = Router();
 
+
 router.get("/", isAuthorized, (req, res) => {
   bookController.getAll(req, res);
   // res.send("Mostrar todos los libros");
