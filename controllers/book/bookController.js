@@ -1,24 +1,35 @@
 import Book from "../../models/book.js";
- 
+import User from "../../models/user.js";
+import Usersql from "../../models/usersql.js";
 
+/* const show = async (req, res) => {
+  const book = await Book.findById(req.params.bookId);
+  res.render('book/show', { book, userId: req.params.userId });
+};
 
+const addToFavorites = async (req, res) => {
+  const { userId } = req.params;
+  const { bookId } = req.body;
+  await User.findByIdAndUpdate(userId, { $addToSet: { favoriteBooks: bookId } });
+  res.redirect(`/users/${userId}/favs`);
+};
 
-const search = async (query) => {
+const showFavorites = async (req, res) => {
+  const user = await User.findById(req.params.userId).populate('favoriteBooks');
+  res.render('user/favorites', { user });
+}; */
+
+  /* async function getFavorites(userId) {
     try {
-      const results = await Book.findAll({
-        where: {
-            [Op.or]: [
-              { title: { [Op.like]: `%${query}%` } },
-              { writer: { [Op.like]: `%${query}%` } }
-            ]
-          }
-        });
-      return [0, results]; // Devuelve un arreglo con un código de éxito (0) y los resultados de búsqueda
+      const user = await User.findByPk(userId, { include: Book });
+      return user.books; // Devuelve los libros favoritos del usuario
     } catch (error) {
-      return [1, error]; // Devuelve un arreglo con un código de error (1) y el error producido
+      throw new Error(error.message);
     }
-  };
-  
+  }
+ */
+
+
 
 
 
@@ -28,7 +39,7 @@ const search = async (query) => {
 const getAll = async () => {
     try{
         let books = await Book.findAll({
-            attributes: ["idbook", "title","book_cover", "writer", "synopsis", "ISBN", "type" ]
+            attributes: ["idbook", "title","book_cover", "writer", "synopsis", /*"ISBN",*/ "type" ]
             });
             return [0, books];
         } catch (error) {
@@ -40,7 +51,7 @@ const getAll = async () => {
 const getById = async (id) => {
      try{
          let book = await Book.findByPk(id, {
-               attributes: ["idbook", "title","book_cover", "writer", "synopsis", "ISBN","type" ]
+               attributes: ["idbook", "title","book_cover", "writer", "synopsis", /*"ISBN",*/"type" ]
             
                 });
                 return [0, book];
@@ -87,10 +98,16 @@ const deletes = async (idbook) => {
 
 
 export default {
-    search,
     getAll,
     getById,
     create,
     update,
-    deletes
+    deletes,
+    //addFavorite,
+    //removeFavorite,
+    //getFavorites
+    //show,
+    //addToFavorites,
+    //showFavorites,
+
 };

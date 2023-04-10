@@ -40,7 +40,7 @@ const create = async (req,res) => {
             type: req.body.type,
             writer: req.body.writer,
             synopsis: req.body.synopsis,
-            ISBN: req.body.ISBN,
+            //ISBN: req.body.ISBN,
         }
         let result = await bookController.create(data);
 
@@ -61,7 +61,7 @@ const update = async (req,res) => {
                 type: req.body.type,
                 writer: req.body.writer,
                 synopsis: req.body.synopsis,
-                ISBN: req.body.ISBN,
+                //ISBN: req.body.ISBN,
             }
             let idbook=req.params.id
         

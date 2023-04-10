@@ -2,6 +2,27 @@ import User from "../../models/user.js";
 import bcrypt from "bcrypt";
 import Usersql from "../../models/usersql.js";
 import Book from "../../models/book.js";
+import Userhaswish from "../../models/users_has_wishes.js";
+
+
+
+
+
+/* const show = async (req, res) => {
+  const userId = req.params.id;
+  const books = await Book.find();
+  const userWishes = await Userhaswish.find({ userId });
+  const bookIds = userWishes.map(userWish => userWish.bookId);
+  const favoriteBooks = books.filter(book => bookIds.includes(book._id));
+  res.render('user/show', { favoriteBooks });
+};
+
+
+ */
+
+
+
+
 
 // crear usuario
 const create = async (req, res) => {
@@ -23,7 +44,7 @@ const create = async (req, res) => {
   }
 };
 
-async function addFavorite(iduser, idbook) {
+/* async function addFavorite(iduser, idbook) {
   try {
     // Buscar usuario
     const user = await Usersql.findByPk(iduser);
@@ -70,7 +91,7 @@ async function removeFavorite(userId, bookId) {
     throw new Error(error.message);
   }
 }
-
+ */
 // login
 const login = async (req, res) => {
   const username = req.body.username.toLowerCase();
@@ -107,16 +128,22 @@ const registerForm = async (req, res) => {
   const error = req.query.error;
   res.render("user/register", { message: error });
 };
-const updateForm = async (req, res) => {
+
+
+ const updateForm = async (req, res) => {
   const error = req.query.error;
   try {
-      const user = await User.findById(req.params.id);
+      const user = await User.findById(req.params._id);
       console.log("user",user);
       res.render('user/edit',{userToEdit:user,error:error});
   } catch (error) {
       res.status(404).json({ message: error.message });
   }
 }
+
+
+
+
 // Get all users
 const getAll = async (req, res) => {
   try {
@@ -179,6 +206,10 @@ const deletes = async (req, res) => {
 
 
 
+
+
+
+
 export default {
   create,
   login,
@@ -188,8 +219,8 @@ export default {
   getAll,
   getById,
   logout,
-  addFavorite,
-  removeFavorite,
+  //addFavorite,
+  //removeFavorite,
   update,
   deletes,
 };

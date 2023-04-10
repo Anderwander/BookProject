@@ -1,25 +1,5 @@
 import bookController from "./bookController.js";
-
-
-
-
-
-const search = async (req,res) => {
-  let result = await bookController.search(query);
-  let auth = req.user;
-  if(result[0] === 0) {
-      res.render("book/list",{books: result[1], auth:auth} );  // llamamos al layout
-  }else {
-      let error = result [1];
-      res.status(500).send({
-          message: error.message || "some error occurred while retrieving books."
-      });
-  }
-};
-
-
-
-
+ 
 
 
 const getAll = async (req, res) => {
@@ -73,7 +53,7 @@ const create = async (req, res) => {
     writer: req.body.writer == "" ? null : req.body.writer,
     type: req.body.type == "" ? null : req.body.type,
     synopsis: req.body.synopsis == 0 ? null : req.body.synopsis,
-                ISBN: req.body.ISBN == 0 ? null : req.body.ISBN,
+                // ISBN: req.body.ISBN == 0 ? null : req.body.ISBN,
   };
 
   let result = await bookController.create(data);
@@ -102,7 +82,7 @@ const update = async (req, res) => {
     writer: req.body.writer == "" ? null : req.body.writer,
     type: req.body.type == "" ? null : req.body.type,
     synopsis: req.body.synopsis == 0 ? null : req.body.synopsis,
-                ISBN: req.body.ISBN == 0 ? null : req.body.ISBN,
+               // ISBN: req.body.ISBN == 0 ? null : req.body.ISBN,
   };
   let idbook = req.params.id;
   let result = await bookController.update(data, idbook);
@@ -122,7 +102,7 @@ const deletes = async (req, res) => {
 };
 
 export default {
-  search,
+
   getAll,
   getById,
   createForm,

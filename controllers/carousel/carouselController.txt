@@ -1,0 +1,30 @@
+const carousel = document.querySelector('.carousel');
+const carouselItems = document.querySelectorAll('.carousel-item');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+
+let currentPosition = 0;
+const itemCount = carouselItems.length;
+const containerWidth = carousel.offsetWidth;
+const itemWidth = containerWidth / 5;
+
+function moveCarousel(position) {
+  carousel.style.transform = `translateX(-${position * itemWidth}px)`;
+}
+
+function handlePrevBtnClick() {
+  if (currentPosition > 0) {
+    currentPosition--;
+    moveCarousel(currentPosition);
+  }
+}
+
+function handleNextBtnClick() {
+  if (currentPosition < Math.floor(itemCount / 2)) {
+    currentPosition++;
+    moveCarousel(currentPosition);
+  }
+}
+
+prevBtn.addEventListener('click', handlePrevBtnClick);
+nextBtn.addEventListener('click', handleNextBtnClick);
