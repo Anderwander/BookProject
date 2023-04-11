@@ -1,22 +1,20 @@
 import connection from "../config/orm.js";
 import Sequelize from "sequelize";
-import User from "./user.js";
+import User from "./usersql.js";
 import Book from "./book.js";
 
-
 const Wish = connection.define(
-  "users_has_wishes",
+  "user _has_wishes",
   {
     iduser: {
       type: Sequelize.INTEGER,
+      primaryKey: true,
       foreignKey: true,
     },
-    username: {
-      type: Sequelize.STRING(100),
-      allowNull: false,
-    },
+
     idbook: {
       type: Sequelize.INTEGER,
+      primaryKey: true,
       foreignKey: true,
     },
   },
@@ -26,8 +24,6 @@ const Wish = connection.define(
   }
 );
 
-
-/* 
 Book.belongsToMany(User, {
   through: "users_has_wishes",
   foreignKey: "idbook",
@@ -39,6 +35,5 @@ User.belongsToMany(Book, {
   foreignKey: "iduser",
   otherKey: "idbook",
 });
- */
 
 export default Wish;

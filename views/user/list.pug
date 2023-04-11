@@ -26,8 +26,8 @@ block content
                             if auth && auth.role == "admin"
                                 section(class="actions")
                                 
-                                form(action=`/users/user/edit/${user.iduser}`, method="get")
+                                form(action=`/users/user/edit/${user.username}`, method="get")
                                     input(type="submit", name="btn edit", value="Editar", class="btn")
-                                form(action=`/users/delete/${user.iduser}`, method="post")
+                                form(action=`/users/user/delete/${user.username}`, method="post")
                                     input(type="hidden", name="password", value="mi-contraseña")
                                     input(type="submit", value="Eliminar", class="btn")

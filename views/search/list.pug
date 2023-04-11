@@ -3,20 +3,20 @@ extends ../layout
 block content
   link(rel="stylesheet", href="/style.css")
   h1 Resultados para "#{query}"
-    if search.length === 0
-      p No se encontraron libros
-    else
-      table
-        thead
+  if search.length === 0
+    p No se encontraron libros
+  else
+    table
+      thead
+        tr
+          //-th Título
+          //-th Escritor
+          //-th Portada
+      tbody
+        each book in search
           tr
-            //-th Título
-            //-th Escritor
-            //-th Portada
-        tbody
-          each book in search
-            tr
-              //-td= book.title
-              //-td= book.writer 
-              td
-                a(href=`/books/book/${book.idbook}`)
-                  img(src=`/img/${book.book_cover}`, class="book-cover")
+            //-td= book.title
+            //-td= book.writer 
+            td
+              a(href=`/books/book/${book.idbook}`)
+                img(src=`/img/${book.book_cover}`, class="book-cover")

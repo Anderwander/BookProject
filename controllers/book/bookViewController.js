@@ -1,6 +1,4 @@
 import bookController from "./bookController.js";
- 
-
 
 const getAll = async (req, res) => {
   let result = await bookController.getAll();
@@ -17,6 +15,7 @@ const getAll = async (req, res) => {
 
 const getById = async (req, res) => {
   let id = req.params.id;
+  let user = req.user;
   let result = await bookController.getById(id);
   if (result[0] === 0) {
     let book = result[1];
@@ -25,7 +24,7 @@ const getById = async (req, res) => {
         message: `Cannot find book with id=${id}.`,
       });
     } else {
-      res.render("book/show", { book: book });
+      res.render("book/show", { book: book, user: user });
     }
   } else {
     let error = result[1];
@@ -53,7 +52,7 @@ const create = async (req, res) => {
     writer: req.body.writer == "" ? null : req.body.writer,
     type: req.body.type == "" ? null : req.body.type,
     synopsis: req.body.synopsis == 0 ? null : req.body.synopsis,
-                // ISBN: req.body.ISBN == 0 ? null : req.body.ISBN,
+    // ISBN: req.body.ISBN == 0 ? null : req.body.ISBN,
   };
 
   let result = await bookController.create(data);
@@ -82,7 +81,7 @@ const update = async (req, res) => {
     writer: req.body.writer == "" ? null : req.body.writer,
     type: req.body.type == "" ? null : req.body.type,
     synopsis: req.body.synopsis == 0 ? null : req.body.synopsis,
-               // ISBN: req.body.ISBN == 0 ? null : req.body.ISBN,
+    // ISBN: req.body.ISBN == 0 ? null : req.body.ISBN,
   };
   let idbook = req.params.id;
   let result = await bookController.update(data, idbook);
@@ -102,7 +101,6 @@ const deletes = async (req, res) => {
 };
 
 export default {
-
   getAll,
   getById,
   createForm,

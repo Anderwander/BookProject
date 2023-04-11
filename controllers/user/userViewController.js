@@ -34,10 +34,9 @@ const getById = async (req, res) => {
 };
 
 const updateForm = async (req, res) => {
-  let iduser = req.params._id;
-  let result = await userController.getById(iduser);
-  const user = result[1];
-  res.render("user/edit", { user: user });
+  let username = req.params.username;
+  let user = await userController.getByUsername(username);
+  res.render("user/edit", { userToEdit: user });
 };
 
 const update = async (req, res) => {
@@ -59,8 +58,8 @@ const update = async (req, res) => {
 };
 
 const deletes = async (req, res) => {
-  let iduser = req.params.id;
-  let result = await userController.deletes(iduser);
+  let username = req.params.username;
+  let result = await userController.deletes(username);
   res.redirect("/users");
 };
 

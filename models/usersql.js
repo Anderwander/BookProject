@@ -1,8 +1,5 @@
 import connection from "../config/orm.js";
 import Sequelize from "sequelize";
-import Lend from "./lend.js";
-import Wish from "./users_has_wishes.js";
-
 
 const User = connection.define(
   "users",
@@ -31,11 +28,5 @@ User.hasMany(Lend, {
   foreignKey: "idreceiver",
 });
 */
-
-
-
-
-
-
 
 export default User;
