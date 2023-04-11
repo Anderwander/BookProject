@@ -17,7 +17,7 @@ router.get("/user/:id", isAuthorized, (req, res) => {
 
 // editar un user
 
-router.get("/user/edit/:id",isAdmin, (req, res) => {
+router.get("/user/edit/:username",isAdmin, (req, res) => {
   userController.updateForm(req,res);
   //res.send("Mostrar un equipo con id "+req.params.id);
 });
@@ -36,13 +36,13 @@ router.post("/",(req, res) => {
 );
 
 
-router.post("/user/edit/:id", [isAdmin,upload.single("image")], (req,res) =>{
+router.post("/user/edit/:username", [isAdmin,upload.single("image")], (req,res) =>{
   userController.update(req,res);
   //res.send("Modificar un equipo con id "+req.params.id);
 }
 );
 
-router.delete("/user/:id", isAdmin, (req,res) => {
+router.post("/user/delete/:username", isAdmin, (req,res) => {
     userController.deletes(req,res);
     //res.send("Eliminar un equipo con id "+req.params.id);
 });

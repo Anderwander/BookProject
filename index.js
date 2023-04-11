@@ -3,10 +3,16 @@ import routerAPI from "./routes/api/router.js";
 import routerView from "./routes/views/router.js"
 import express_session from "express-session";
 import passport from "./config/passport.js";
+import aboutUsRouter from './routes/views/aboutus.js';
+import contactoRouter from './routes/views/contacto.js';
+import privacidadRouter from './routes/views/privacidad.js';
 
 
 const app = express();
 
+app.use('/', aboutUsRouter);
+app.use('/', contactoRouter);
+app.use('/', privacidadRouter);
 
 app.use(express.static("public")); //carpeta publica para meter el css lo del front
 app.use(express_session({ 
