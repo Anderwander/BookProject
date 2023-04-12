@@ -1,13 +1,30 @@
 extends ../layout
 
-block content
-    h1= user.name + "'s favorite books"
-    each book in user.favoriteBooks
-        div
-            h2= book.title 
-            h3= book.writer
-            img(src=`/img/${book.book_cover}`)
-            p= book.synopsis
-            h4= book.type
-    a(href="/books")
-        button Volver a libros
+block content 
+    link(rel="stylesheet", href="/style.css")
+    h1 Perfil de {user.username}
+    a(href="/books/new")
+        button Añadir un libro
+    section
+        h3 Datos del perfil
+        p Nombre= user.username
+        p Email= user.email
+        p Rol= user.role
+
+    section
+        h3 Libros favoritos
+        if favorites.length === 0
+            ul
+                each book in favorites
+                    li= book.title
+        else
+            p No se han añadido libros favoritos
+
+    section
+        h3 Libros subidos
+        if uploads.length === 0
+            ul
+                each book in uploads
+                    li= book.title
+        else
+            p No se han subido libros

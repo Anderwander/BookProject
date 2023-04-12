@@ -17,6 +17,7 @@ const getAll = async (req, res) => {
 
 const getById = async (req, res) => {
   let id = req.params.id;
+  let user = req.user;
   let result = await bookController.getById(id);
   if (result[0] === 0) {
     let book = result[1];
@@ -25,7 +26,7 @@ const getById = async (req, res) => {
         message: `Cannot find book with id=${id}.`,
       });
     } else {
-      res.render("book/show", { book: book });
+      res.render("book/show", { book: book, user: user });
     }
   } else {
     let error = result[1];
@@ -33,7 +34,7 @@ const getById = async (req, res) => {
       message: error.message || "some error occurred while retrieving book.",
     });
   }
-};
+}; 
 
 const createForm = async (req, res) => {
   let results = await bookController.getAll();
@@ -55,7 +56,7 @@ const create = async (req, res) => {
     synopsis: req.body.synopsis == 0 ? null : req.body.synopsis,
                 // ISBN: req.body.ISBN == 0 ? null : req.body.ISBN,
   };
-
+  
   let result = await bookController.create(data);
   if (result[0] === 0) {
     res.redirect("/books");

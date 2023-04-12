@@ -34,11 +34,19 @@ const getById = async (req, res) => {
 };
 
 const updateForm = async (req, res) => {
-  let iduser = req.params._id;
-  let result = await userController.getById(iduser);
-  const user = result[1];
-  res.render("user/edit", { user: user });
+  let username = req.params.username;
+  let user = await userController.getByUsername(username);
+  res.render("user/edit", { userToEdit: user });
 };
+
+const deletes = async (req, res) => {
+  let username = req.params.username;
+  let result = await userController.deletes(username);
+  res.redirect("/users");
+};
+
+
+
 
 const update = async (req, res) => {
   let data = {
@@ -58,13 +66,14 @@ const update = async (req, res) => {
   }
 };
 
-const deletes = async (req, res) => {
-  let iduser = req.params.id;
-  let result = await userController.deletes(iduser);
-  res.redirect("/users");
-};
+
+
+
+
+
 
 export default {
+  //showProfile,
   getAll,
   getById,
   update,

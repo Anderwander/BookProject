@@ -1,3 +1,4 @@
+use bookshare;
 INSERT INTO books (title, synopsis, writer, type, ISBN, book_cover) 
 VALUES 
 ("Cien años de soledad", "Una saga familiar en un pueblo aislado de Colombia, llena de misterios y tragedias", "Gabriel García Márquez", "Realismo mágico", "9780307474728", "Soledad.jpg"), 
