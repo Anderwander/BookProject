@@ -30,20 +30,15 @@ const Book = connection.define("book",{
         type: Sequelize.STRING(300),
         allowNull: false,
     },
-    /* ISBN:{
-        type: Sequelize.BIGINT(20),
-        allowNull: false
-    },*/
+    username: {
+        type: Sequelize.STRING(100),
+        allowNull: false,
+      },
 },
 {
 
     timestamps: false
 });
-
-
-  
- 
-
 
 export default Book;
 

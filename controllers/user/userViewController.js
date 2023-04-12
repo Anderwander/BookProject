@@ -55,8 +55,8 @@ const update = async (req, res) => {
     password: req.body.hashedPassword === "" ? null : req.body.hashedPassword,
     email: req.body.email === "" ? null : req.body.email,
   };
-  let iduser = req.params._id;
-  let result = await userController.update(data, iduser);
+  let username = req.params._id;
+  let result = await userController.update(data, username);
   if (result[0] === 0) {
     res.redirect("/users");
   } else {

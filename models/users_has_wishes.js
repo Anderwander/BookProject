@@ -7,7 +7,7 @@ import Book from "./book.js";
 const Wish = connection.define(
   "user_has_wishes",
   {
-    iduser: {
+    username: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       foreignKey: true,
@@ -26,14 +26,14 @@ const Wish = connection.define(
 
 
 Book.belongsToMany(User, {
-  through: "users_has_wishes",
+  through: "user_has_wishes",
   foreignKey: "idbook",
-  otherKey: "iduser",
+  otherKey: "username",
 });
 
 User.belongsToMany(Book, {
-  through: "users_has_wishes",
-  foreignKey: "iduser",
+  through: "user_has_wishes",
+  foreignKey: "username",
   otherKey: "idbook",
 });
 
