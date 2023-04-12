@@ -2,29 +2,31 @@ import mongoose from "../config/mongoose.js";
 import bcrypt from "bcrypt";
 
 const userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  role: {
-    type: String,
-    required: true,
-    enum: ["admin", "user"],
-  },
-  avatar: {
-    type: String,
-    required: false,
-  },
+
+    username: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true,
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    role: {
+        type: String,
+        required: true,
+        enum: ["admin", "user"]
+    },
+    avatar: {
+        type: String,
+        required: false
+    },
+
 });
 
 // add verification methods to userSchema

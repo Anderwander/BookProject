@@ -7,6 +7,7 @@ import users_has_wishes from "../../models/users_has_wishes.js";
 const router = Router();
 
 // Agregar libro a favoritos
+
 router.post("/:username/favs/:idbook/add", isAuthorized, (req, res) => {
   favsController
     .addFavorite(req, res)

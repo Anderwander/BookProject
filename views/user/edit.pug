@@ -4,9 +4,10 @@ block content
     link(rel="stylesheet", href="/style.css")
     h1 Editar usuario
     if userToEdit
-            img(src=`${userToEdit.avatar}`, alt="avatar", class="avatar")
+        img(src=`${userToEdit.avatar}`, alt="avatar", class="avatar")
     else
-            img(src="/img/default-avatar.jpg", alt="avatar", class="avatar")
+        img(src="/img/default-avatar.jpg", alt="avatar", class="avatar")
+
     form(action=`/users/user/edit/${userToEdit.username}`, method="post", enctype="multipart/form-data")
         label(for="username") Usuario
         input(type="text", name="username", id="username", value=`${userToEdit.username}`, required)
@@ -16,7 +17,6 @@ block content
         br
         label(for="role") Rol
         select(name="role", id="role")
-            
             option(value="user", selected=(userToEdit.role === "user") ) User
             option(value="admin", selected=(userToEdit.role === "admin")) Admin
         br
@@ -24,9 +24,8 @@ block content
         input(type="password", name="password", id="password")
         br
         label(for="image") Imagen
-
         input(type="file", name="image", id="image")
         br
         input(type="submit", class="btn", value="Editar")
-    a(href="/users")
-        button(class="btn") Volver
+        a(href="/users") 
+        button(class="btn") Volver 

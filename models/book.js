@@ -1,6 +1,7 @@
 import connection from "../config/orm.js";
 import Sequelize from "sequelize";
 
+
 const Book = connection.define(
   "book",
   {
@@ -30,14 +31,15 @@ const Book = connection.define(
       type: Sequelize.STRING(300),
       allowNull: false,
     },
-    /* ISBN:{
-        type: Sequelize.BIGINT(20),
-        allowNull: false
-    },*/
-  },
-  {
-    timestamps: false,
-  }
-);
+    username: {
+        type: Sequelize.STRING(100),
+        allowNull: false,
+      },
+},
+{
+
+    timestamps: false
+});
+
 
 export default Book;

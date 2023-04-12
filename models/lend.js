@@ -2,6 +2,7 @@ import connection from "../config/orm.js";
 import Sequelize from "sequelize";
 import Book from "./book.js";
 
+
 const Lend = connection.define(
   "lend",
   {
@@ -39,6 +40,7 @@ const Lend = connection.define(
     timestamps: false,
   }
 );
+
 Lend.belongsTo(Book, {
   foreignKey: "idbook",
 });

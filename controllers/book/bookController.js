@@ -39,7 +39,7 @@ const showFavorites = async (req, res) => {
 const getAll = async () => {
     try{
         let books = await Book.findAll({
-            attributes: ["idbook", "title","book_cover", "writer", "synopsis", /*"ISBN",*/ "type" ]
+            attributes: ["idbook", "title","book_cover", "writer", "synopsis", "type" , "username"]
             });
             return [0, books];
         } catch (error) {
@@ -51,7 +51,7 @@ const getAll = async () => {
 const getById = async (id) => {
      try{
          let book = await Book.findByPk(id, {
-               attributes: ["idbook", "title","book_cover", "writer", "synopsis", /*"ISBN",*/"type" ]
+               attributes: ["idbook", "title","book_cover", "writer", "synopsis", "type" , "username" ]
             
                 });
                 return [0, book];

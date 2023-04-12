@@ -4,6 +4,7 @@ import Wish from "../../models/users_has_wishes.js";
 import Usersql from "../../models/usersql.js";
 
 async function addFavorite(req, res) {
+
   const idbook = req.params.idbook;
   const username = req.user.username;
   console.log("username:", username);
@@ -34,6 +35,7 @@ async function addFavorite(req, res) {
   return true;
 }
 
+
 const showFavorites = async (req, res) => {
   const username = req.params.username;
   console.log("iduser es:", username);
@@ -52,15 +54,14 @@ const showFavorites = async (req, res) => {
   res.status(500).send("Ha ocurrido un error interno más o menos grande");
 };
 
+
 async function removeFavorite(req, res) {
-  try {
     const { iduser, idbook } = req.params;
     console.log("iduser:", iduser);
     console.log("idbook:", idbook);
     // Buscar usuario
-    const user = await Usersql.findByPk(iduser);
+    const user = await Usersql.findOne({where: {username: username}});
     if (!user) throw new Error("El usuario no existe");
-
     // Buscar libro
     const book = await Book.findByPk(idbook);
     if (!book) throw new Error("El libro no existe");
@@ -72,14 +73,12 @@ async function removeFavorite(req, res) {
     if (!favorite) {
       throw new Error("El libro no fue agregado a favoritos");
     }
-
     // Eliminar libro de favoritos
     await favorite.destroy(book);
     return true;
-  } catch (error) {
-    throw new Error(error.message);
-  }
 }
+
+
 
 export default {
   addFavorite,

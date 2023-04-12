@@ -32,7 +32,7 @@ const getById = async (req, res) => {
       message: error.message || "some error occurred while retrieving book.",
     });
   }
-};
+}; 
 
 const createForm = async (req, res) => {
   let results = await bookController.getAll();
@@ -52,9 +52,9 @@ const create = async (req, res) => {
     writer: req.body.writer == "" ? null : req.body.writer,
     type: req.body.type == "" ? null : req.body.type,
     synopsis: req.body.synopsis == 0 ? null : req.body.synopsis,
-    // ISBN: req.body.ISBN == 0 ? null : req.body.ISBN,
-  };
 
+  };
+  
   let result = await bookController.create(data);
   if (result[0] === 0) {
     res.redirect("/books");
@@ -81,7 +81,7 @@ const update = async (req, res) => {
     writer: req.body.writer == "" ? null : req.body.writer,
     type: req.body.type == "" ? null : req.body.type,
     synopsis: req.body.synopsis == 0 ? null : req.body.synopsis,
-    // ISBN: req.body.ISBN == 0 ? null : req.body.ISBN,
+
   };
   let idbook = req.params.id;
   let result = await bookController.update(data, idbook);

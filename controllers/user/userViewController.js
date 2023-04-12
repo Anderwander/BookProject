@@ -39,6 +39,15 @@ const updateForm = async (req, res) => {
   res.render("user/edit", { userToEdit: user });
 };
 
+const deletes = async (req, res) => {
+  let username = req.params.username;
+  let result = await userController.deletes(username);
+  res.redirect("/users");
+};
+
+
+
+
 const update = async (req, res) => {
   let data = {
     avatar: req.body.avatar === "" ? null : req.body.avatar,
@@ -46,8 +55,8 @@ const update = async (req, res) => {
     password: req.body.hashedPassword === "" ? null : req.body.hashedPassword,
     email: req.body.email === "" ? null : req.body.email,
   };
-  let iduser = req.params._id;
-  let result = await userController.update(data, iduser);
+  let username = req.params._id;
+  let result = await userController.update(data, username);
   if (result[0] === 0) {
     res.redirect("/users");
   } else {
@@ -57,6 +66,7 @@ const update = async (req, res) => {
   }
 };
 
+
 const deletes = async (req, res) => {
   let username = req.params.username;
   let result = await userController.deletes(username);
@@ -64,6 +74,7 @@ const deletes = async (req, res) => {
 };
 
 export default {
+  //showProfile,
   getAll,
   getById,
   update,
