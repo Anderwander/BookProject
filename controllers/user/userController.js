@@ -1,6 +1,7 @@
 import User from "../../models/user.js";
 import bcrypt from "bcrypt";
 import Usersql from "../../models/usersql.js";
+import Book from "../../models/book.js";
 
 
 
@@ -158,7 +159,7 @@ const getById = async (req, res) => {
       return user; 
   } catch (error) {
     return error; }
-}
+} 
 
 
 // Get user
@@ -201,7 +202,7 @@ const update = async (req, res) => {
 const deletes = async (req, res) => {
   try {
     let username = req.params.username;
-      await User.findOneAndRemove(username);
+      await User.findOneAndRemove({username:username});
       res.status(200).json({ message: "User deleted" });
   } catch (error) {
       res.status(404).json({ message: error.message });
@@ -213,8 +214,25 @@ const deletes = async (req, res) => {
 
 
 
+const showProfile = async function(req, res) {
+  const username = req.params.username;
 
+  try {
+    const user = await getByUsername(req.params.username);
+    if (!user) {
+      res.status(404).send("Usuario no encontrado");
+      return;
+    }
 
+    const favorites = await Book.showFavorites({ username: { $in: user.favorites } });
+    const uploads = await Book.find({ uploader: user.username });
+
+    res.render("user/profile", { user: user, favorites: favorites, uploads: uploads });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error al obtener los datos del usuario");
+  }
+};
 
 
 export default {
@@ -227,6 +245,7 @@ export default {
   getById,
   logout,
   getByUsername,
+  showProfile,
   //addFavorite,
   //removeFavorite,
   update,

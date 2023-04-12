@@ -5,11 +5,13 @@ import Usersql from "../../models/usersql.js";
 
 
 async function addFavorite(req, res) {
-  try { 
-    const username= req.user.username;
     const idbook = req.params.idbook;
+    const username= req.user.username;
+    console.log("username",username);
+    console.log("idbook",idbook);
     // Buscar usuario
-    const user = await Usersql.findOne({where: {username: username}});
+    const user = await Usersql.findOne({username: username});
+    console.log("username",user);
     if (!user) throw new Error("El usuario no existe");
 
     // Buscar libro
@@ -17,23 +19,20 @@ async function addFavorite(req, res) {
     if (!book) throw new Error("El libro no existe");
 
     // Verificar si el libro ya está en favoritos
-    const favorite = await Wish.findOne({
+    const isInFav = await Wish.findOne({
       where: { iduser: user.iduser, idbook: idbook },
     });
-    if (favorite) {
+    console.log("libros devuelto:",isInFav);
+    if (isInFav) {
       throw new Error("El libro ya está en favoritos");
     }
 
     // Agregar libro a favoritos
-    await Wish.create({ username: username, idbook: idbook });
+    await Wish.create({ iduser: user.iduser, idbook: idbook });
     return true;
-  } catch (error) {
-    throw new Error(error.message);
-  }
 }
 
 async function removeFavorite(req, res) {
-  try {
     const { iduser, idbook } = req.params;
     console.log('iduser:', iduser);
     console.log('idbook:', idbook);
@@ -54,9 +53,6 @@ async function removeFavorite(req, res) {
     // Eliminar libro de favoritos
     await favorite.destroy(book);
     return true;
-  } catch (error) {
-    throw new Error(error.message);
-  }
 }
  
 
@@ -79,13 +75,14 @@ const showFavorites = async (req, res) => {
         },
       },
     });
-
-    res.render('user/favs', { user });
+const favorites = user.Books;
+    res.render('user/favs', { favorites:favorites });
   } catch (error) {
     console.error(error);
     res.status(500).send('Ha ocurrido un error interno');
   }
 };
+
 
 
 export default {

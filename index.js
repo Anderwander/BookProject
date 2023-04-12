@@ -14,6 +14,7 @@ app.use('/', aboutUsRouter);
 app.use('/', contactoRouter);
 app.use('/', privacidadRouter);
 
+
 app.use(express.static("public")); //carpeta publica para meter el css lo del front
 app.use(express_session({ 
     secret: "lima",

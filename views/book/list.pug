@@ -3,9 +3,9 @@ extends ../layout
 block content 
     link(rel="stylesheet", href="/style.css")
     h1 Libros
-    a(href="/books/new")
-        button Añadir un libro 
-        table(class="table table.striped", id="books")
+    //-a(href="/books/new")
+        //-button Añadir un libro 
+    table(class="table table.striped", id="books")
             thead 
                 //-th Portada
                 //-th Titulo 
@@ -33,3 +33,4 @@ block content
                                     input(type="hidden", name="password", value="mi-contraseña")
                                     input(type="submit", value="Eliminar", class="btn")
                                 
+    

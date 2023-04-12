@@ -56,7 +56,7 @@ const create = async (req, res) => {
     synopsis: req.body.synopsis == 0 ? null : req.body.synopsis,
                 // ISBN: req.body.ISBN == 0 ? null : req.body.ISBN,
   };
-
+  
   let result = await bookController.create(data);
   if (result[0] === 0) {
     res.redirect("/books");

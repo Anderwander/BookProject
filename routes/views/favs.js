@@ -10,7 +10,7 @@ const router = Router();
 router.post('/:username/favs/:idbook/add', isAuthorized, (req, res) => {
     favsController.addFavorite(req,res)
       .then(() => {
-        res.redirect(`/users/${username}/favs`);
+        res.redirect(`/users/${req.user.username}/favs`);
       })
       .catch((error) => {
         console.error(error);
