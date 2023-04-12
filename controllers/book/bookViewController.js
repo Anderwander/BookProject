@@ -54,7 +54,6 @@ const create = async (req, res) => {
     writer: req.body.writer == "" ? null : req.body.writer,
     type: req.body.type == "" ? null : req.body.type,
     synopsis: req.body.synopsis == 0 ? null : req.body.synopsis,
-                // ISBN: req.body.ISBN == 0 ? null : req.body.ISBN,
   };
   
   let result = await bookController.create(data);
@@ -83,7 +82,6 @@ const update = async (req, res) => {
     writer: req.body.writer == "" ? null : req.body.writer,
     type: req.body.type == "" ? null : req.body.type,
     synopsis: req.body.synopsis == 0 ? null : req.body.synopsis,
-               // ISBN: req.body.ISBN == 0 ? null : req.body.ISBN,
   };
   let idbook = req.params.id;
   let result = await bookController.update(data, idbook);
