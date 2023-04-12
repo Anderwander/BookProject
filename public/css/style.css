@@ -1,353 +1,337 @@
-*{
-    font-family: 'Montserrat', sans-serif;
+* {
+  font-family: "Montserrat", sans-serif;
 }
 body {
-    background-color: white;
-    text-align: center;
+  background-color: white;
+  text-align: center;
 }
 h1 {
-    color: #19a7ce;
+  color: #19a7ce;
 }
 
-nav{
-    background-color: #146c94;
-    display: flex;
-    flex-direction: row-reverse;
-    border-radius: 5px;
-    padding: 10px;
+nav {
+  background-color: #146c94;
+  display: flex;
+  flex-direction: row-reverse;
+  border-radius: 5px;
+  padding: 10px;
 }
 ul li {
-    display: inline-block;
-    margin: 0 10px;
-    color: white;
+  display: inline-block;
+  margin: 0 10px;
+  color: black;
 }
-.btn{
-    background-color: #146c94;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 5px;
+nav li {
+  color: white;
+}
+
+.btn {
+  background-color: #146c94;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .edit {
-    background-color: rgb(239, 209, 38);
-    color: #000;
+  background-color: rgb(239, 209, 38);
+  color: #000;
 }
 .new {
-    background-color: rgb(160, 202, 98);
-    color: #fff;
+  background-color: rgb(160, 202, 98);
+  color: #fff;
 }
-table{
-    margin: auto;
+table {
+  margin: auto;
 }
-select, option{
-    padding: 10px 20px;
-    text-align: center;
+select,
+option {
+  padding: 10px 20px;
+  text-align: center;
 }
 .actions {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
-img{
-    position: relative;
-    max-width: 100%;
-    border-radius: 10px;
-
+img {
+  position: relative;
+  max-width: 100%;
+  border-radius: 10px;
 }
 .avatar {
-    width: 40%;
-    height: 40%;
+  width: 40%;
+  height: 40%;
 }
 
 td {
-    text-align: center;
-    display: flex; /* or inline-flex */
-    flex-wrap: wrap;
+  text-align: center;
+  display: flex; /* or inline-flex */
+  flex-wrap: wrap;
 }
 
 tbody {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: auto;
-    grid-gap: 10px;
-  }
-  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: auto;
+  grid-gap: 10px;
+}
+
 .book-cover {
-    width: 100%;
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .book-cover {
+    width: 68%;
     height: auto;
   }
-
-  @media (min-width: 768px) {
-    .book-cover {
-        width: 68%;
-        height: auto;
-      }
-      img{
-        position: relative;
-        max-width: 68%;
-        border-radius: 10px;
-    
-    }
-  }
-
-
-#search-form{ 
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  img {
     position: relative;
-    z-index: 1;
-    background-color: #fff;
-    max-width: 360px;
-    padding: 10px;
-    text-align: center;
-    box-shadow: 0 0 20px 0 rgba(0,0,0,2), 0 5px 5 px 0 rgba(0,0,0,0.2);
+    max-width: 68%;
+    border-radius: 10px;
+  }
 }
 
-input{
-    background-color: #F2F2F2;
-    width:100%;
-    border:0;
-    margin: 0 0 15px;
-    padding: 15px;
-    box-sizing: border-box;
-    font-size: 14px;
+#search-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  background-color: #fff;
+  max-width: 360px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 2), 0 5px 5 px 0 rgba(0, 0, 0, 0.2);
 }
 
+input {
+  background-color: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
 
 #rules img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
-  
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
 /* CSS carrousel*/
 .carousel-container {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    
-  }
-  .carousel {
-    display: flex;
-    transition: transform 0.5s ease;
-    overflow: hidden;
-    width: 100%;
-    
-  }
-  .carousel-item {
-    width: calc(100% / 4);
-    margin: 10px;
-    position: relative;
-  }
-  .carousel-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  /* CSS para las flechas del carrousel*/
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease;
+  overflow: hidden;
+  width: 100%;
+}
+.carousel-item {
+  width: calc(100% / 4);
+  margin: 10px;
+  position: relative;
+}
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+/* CSS para las flechas del carrousel*/
 
-  .carousel-nav {
-    position: relative;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-  }
-  
-  .carousel-nav button {
-    background-color: #fff;
-    border: none;
-    color: #333;
-    padding: 10px;
-    margin: 0 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    
-  }
-  /*CSS para el botón de disponible o reservado*/
+.carousel-nav {
+  position: relative;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.carousel-nav button {
+  background-color: #fff;
+  border: none;
+  color: #333;
+  padding: 10px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+/*CSS para el botón de disponible o reservado*/
 .availability-btn.moved {
-    background-color: green;
-    
-   
-  }
-  .availability-btn.reserved {
-    background-color: red;
-    
-    
-    
-  }
-  .disponible {
-    background-color: green;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 10px;
-    
-    
-    
-  }
-  .reservado {
-    background-color: red;
-   
-   
-    
-  }
-  .botón-azul {
-    background-color: #146c94;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-  #button {
-    flex-wrap: wrap;
-  }
-  /* Estilos generales para el footer */
-  /*CSS para el footer*/
-  
-  footer {
-   /*  background-color: #f2f2f2; */
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-  }
-  
-  #enlaces {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  #enlaces li {
-    margin-right: 20px;
-  }
-  
-  #enlaces li:last-child {
-    margin-right: 0;
-  }
-  
-  #enlaces a {
-    color: black;
-    text-decoration: none;
-  }
-  
-  #center {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  #redes {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  #redes li {
-    margin-right: 10px;
-  }
-  
-  #redes li:last-child {
-    margin-right: 0;
-  }
-  
-  #iconos {
-    width: 30px;
-    height: 30px;
-  }
-  
-  #iconos:hover {
-    opacity: 0.8;
-  }
-  
-  /* FORMULARIO */
-  .formtext{
-    font-family: 'Montserrat', sans-serif;
-    text-align:center;
-    
-  }
-  form {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0 auto;
-    /* max-width: 600px;
+  background-color: green;
+}
+.availability-btn.reserved {
+  background-color: red;
+}
+.disponible {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.reservado {
+  background-color: red;
+}
+.botón-azul {
+  background-color: #146c94;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#button {
+  flex-wrap: wrap;
+}
+/* Estilos generales para el footer */
+/*CSS para el footer*/
+
+footer {
+  /*  background-color: #f2f2f2; */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+#enlaces {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#enlaces li {
+  margin-right: 20px;
+}
+
+#enlaces li:last-child {
+  margin-right: 0;
+}
+
+#enlaces a {
+  color: black;
+  text-decoration: none;
+}
+
+#center {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#redes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#redes li {
+  margin-right: 10px;
+}
+
+#redes li:last-child {
+  margin-right: 0;
+}
+
+#iconos {
+  width: 30px;
+  height: 30px;
+}
+
+#iconos:hover {
+  opacity: 0.8;
+}
+
+/* FORMULARIO */
+.formtext {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+form {
+  font-family: "Montserrat", sans-serif;
+  margin: 0 auto;
+  /* max-width: 600px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f2f2f2; */
-  }
-  
-  /* Estilos para las etiquetas de texto */
-  label {
-    font-family: 'Montserrat', sans-serif;
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  /* Estilos para los campos de entrada */
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  textarea {
-    font-family: 'Montserrat', sans-serif;
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    margin-bottom: 10px;
-  }
-  
-  /* Estilos para el botón de envío */
-  button[type="submit"] {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #146c94;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button[type="submit"]:hover {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #146c94;
-  }
-  
-  /* Estilos para el mensaje de error */
-  input:invalid,
-  textarea:invalid {
-    border-color: #146c94;
-  }
-  
-  input:invalid:focus,
-  textarea:invalid:focus {
-    border-color: #146c94;
-    box-shadow: none;
-  }
-  
-  input:valid,
-  textarea:valid {
-    border-color: #ccc;
-  }
-  
+}
+
+/* Estilos para las etiquetas de texto */
+label {
+  font-family: "Montserrat", sans-serif;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Estilos para los campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+/* Estilos para el botón de envío */
+button[type="submit"] {
+  font-family: "Montserrat", sans-serif;
+  background-color: #146c94;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  font-family: "Montserrat", sans-serif;
+  background-color: #146c94;
+}
+
+/* Estilos para el mensaje de error */
+input:invalid,
+textarea:invalid {
+  border-color: #146c94;
+}
+
+input:invalid:focus,
+textarea:invalid:focus {
+  border-color: #146c94;
+  box-shadow: none;
+}
+
+input:valid,
+textarea:valid {
+  border-color: #ccc;
+}

@@ -12,6 +12,10 @@ block content
         button(type="submit", class="btn") Agregar a favoritos
     a(href="/books")
         button Volver a libros
+    if user.role === "admin"|| user.username === book.username 
+        a(href=`/books/edit/${book.idbook}`)
+            button Editar
+
 
 
 

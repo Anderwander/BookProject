@@ -2,29 +2,36 @@ extends ../layout
 
 block content 
     link(rel="stylesheet", href="/style.css")
-    h1 Perfil de {user.username}
+    h1 Perfil de !{user.username}
     a(href="/books/new")
         button Añadir un libro
     section
         h3 Datos del perfil
-        p Nombre= user.username
-        p Email= user.email
-        p Rol= user.role
+        //- p Nombre= !{user.username}
+       
 
     section
-        h3 Libros favoritos
-        if favorites.length === 0
+        h3 Libros favoritos 
+        if user.favorites.length >0
             ul
-                each book in favorites
+                each book in user.favorites
                     li= book.title
+                    li 
+                        a(href=`/books/book/${book.idbook}`)
+                            img(src=`/img/${book.book_cover}`, class="book-cover")
         else
             p No se han añadido libros favoritos
 
     section
-        h3 Libros subidos
-        if uploads.length === 0
+        h3 Mis libros
+        if user.myBooks.length >0
             ul
-                each book in uploads
+                each book in user.myBooks
                     li= book.title
+                    li  
+                        a(href=`/books/book/${book.idbook}`)
+                            img(src=`/img/${book.book_cover}`, class="book-cover")
         else
-            p No se han subido libros
+            p No se han añadido libros favoritos
+
+    

@@ -12,16 +12,16 @@ router.post("/:username/favs/:idbook/add", isAuthorized, (req, res) => {
   favsController
     .addFavorite(req, res)
     .then(() => {
-      res.redirect(`/users/${req.user.username}/favs`);
+      res.redirect(`/users/user/profile/${req.user.username}`);
     })
     .catch((error) => {
       console.error(error);
-      res.status(500).send("Ha ocurrido un error interno");
+      res.status(500).send("Ha ocurrido un error internorl");
     });
 });
 
 // Mostrar lista de libros favoritos
-router.get("/:username/favs", isAuthorized, (req, res) => {
+/* router.get("/:username/favs", isAuthorized, (req, res) => {
   const username = req.params.username;
   favsController
     .showFavorites(username)
@@ -32,7 +32,7 @@ router.get("/:username/favs", isAuthorized, (req, res) => {
       console.error(error);
       res.status(500).send("Ha ocurrido un error interno mazo tocho");
     });
-});
+}); */
 
 // Eliminar libro de favoritos
 router.post("/:iduser/favs/:idbook/remove", isAuthorized, (req, res) => {

@@ -39,15 +39,6 @@ const updateForm = async (req, res) => {
   res.render("user/edit", { userToEdit: user });
 };
 
-const deletes = async (req, res) => {
-  let username = req.params.username;
-  let result = await userController.deletes(username);
-  res.redirect("/users");
-};
-
-
-
-
 const update = async (req, res) => {
   let data = {
     avatar: req.body.avatar === "" ? null : req.body.avatar,
@@ -65,7 +56,6 @@ const update = async (req, res) => {
     res.redirect(`/users?error=${errorUri}`);
   }
 };
-
 
 const deletes = async (req, res) => {
   let username = req.params.username;

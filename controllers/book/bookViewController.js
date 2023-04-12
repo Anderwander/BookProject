@@ -32,7 +32,7 @@ const getById = async (req, res) => {
       message: error.message || "some error occurred while retrieving book.",
     });
   }
-}; 
+};
 
 const createForm = async (req, res) => {
   let results = await bookController.getAll();
@@ -46,15 +46,16 @@ const createForm = async (req, res) => {
 };
 
 const create = async (req, res) => {
+  console.log(req.file.path);
   let data = {
-    book_cover: req.body.book_cover === "" ? null : req.body.book_cover,
+    book_cover: req.file ? req.file.path.split("img/")[1] : undefined,
     title: req.body.title == "" ? null : req.body.title,
     writer: req.body.writer == "" ? null : req.body.writer,
     type: req.body.type == "" ? null : req.body.type,
     synopsis: req.body.synopsis == 0 ? null : req.body.synopsis,
-
+    username: req.user.username,
   };
-  
+
   let result = await bookController.create(data);
   if (result[0] === 0) {
     res.redirect("/books");
@@ -81,7 +82,6 @@ const update = async (req, res) => {
     writer: req.body.writer == "" ? null : req.body.writer,
     type: req.body.type == "" ? null : req.body.type,
     synopsis: req.body.synopsis == 0 ? null : req.body.synopsis,
-
   };
   let idbook = req.params.id;
   let result = await bookController.update(data, idbook);

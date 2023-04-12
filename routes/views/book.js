@@ -1,5 +1,9 @@
 import { Router } from "express";
-import { isAuthorized, isAdmin } from "../../middlewares/auth.js";
+import {
+  isAuthorized,
+  isAdmin,
+  isAdminOrOwner,
+} from "../../middlewares/auth.js";
 import bookController from "../../controllers/book/bookViewController.js";
 import upload from "../../middlewares/multer.js";
 
@@ -27,18 +31,18 @@ router.post("/", [isAuthorized, upload.single("book_cover")], (req, res) => {
 
 // editar un libro
 
-router.get("/edit/:id", isAdmin, (req, res) => {
+router.get("/edit/:id", isAdminOrOwner, (req, res) => {
   bookController.updateForm(req, res);
   // res.send("Modificar un libro con id " + req.params.id);
 });
 
-router.post("/edit/:id", isAdmin, (req, res) => {
+router.post("/edit/:id", isAdminOrOwner, (req, res) => {
   bookController.update(req, res);
   // res.send("Modificar un libro con id " + req.params.id);
 });
 
 // eliminar un libro delete
-router.post("/delete/:id", isAdmin, (req, res) => {
+router.post("/delete/:id", isAdminOrOwner, (req, res) => {
   bookController.deletes(req, res);
   // res.send("Eliminar un libro con id " + req.params.id);
 });

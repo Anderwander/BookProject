@@ -2,7 +2,7 @@ import User from "../../models/user.js";
 import bcrypt from "bcrypt";
 import Usersql from "../../models/usersql.js";
 import Book from "../../models/book.js";
-
+import Wish from "../../models/users_has_wishes.js";
 
 /* const show = async (req, res) => {
   const userId = req.params.id;
@@ -122,7 +122,6 @@ const registerForm = async (req, res) => {
   res.render("user/register", { message: error });
 };
 
-
 const updateForm = async (req, res) => {
   let username = req.params.username;
   let user = await getByUsername(username);
@@ -134,7 +133,7 @@ const getAll = async (req, res) => {
   try {
     const auth = req.user;
     const users = await User.find();
-    console.log(users);
+    //console.log(users);
     res.render("user/list", { users: users, auth: auth });
   } catch (error) {
     res.status(404).json({ message: error.message });
@@ -144,28 +143,39 @@ const getAll = async (req, res) => {
 // Get user
 const getById = async (req, res) => {
   try {
-
-      const user = await User.findById(req.params.id);
-      return user; 
+    const user = await User.findById(req.params.id);
+    return user;
   } catch (error) {
-    return error; }
-} 
-
+    return error;
+  }
+};
 
 // Get user
 const getByUsername = async (username) => {
   try {
-      const user = await User.findOne({username: username});
-return user;
+    const user = await Usersql.findByPk(username, {
+      include: [
+        {
+          model: Book,
+          as: "favorites",
+          attributes: ["idbook", "title", "writer", "book_cover"],
+        },
+        {
+          model: Book,
+          as: "myBooks",
+          attributes: ["idbook", "title", "writer", "book_cover"],
+        },
+      ],
+    });
+    return user;
   } catch (error) {
-return error;  }
-}
-
-
+    throw new Error(error);
+    return error;
+  }
+};
 
 // Update user
 const update = async (req, res) => {
-
   console.log("file", req.file);
   const { password, email, role } = req.body;
 
@@ -174,7 +184,6 @@ const update = async (req, res) => {
     hashedPassword = await bcrypt.hash(password, 10);
   }
   try {
-
     const user = await getByUsername(req.params.username);
     user.password = password !== "" ? hashedPassword : user.password;
     user.email = email !== "" ? email : user.email;
@@ -200,14 +209,9 @@ const deletes = async (req, res) => {
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
-}
+};
 
-
-
-
-
-
-const showProfile = async function(req, res) {
+const showProfile = async function (req, res) {
   const username = req.params.username;
 
   try {
@@ -217,17 +221,16 @@ const showProfile = async function(req, res) {
       return;
     }
 
-    const favorites = await Book.showFavorites({ username: { $in: user.favorites } });
-    const uploads = await Book.find({ uploader: user.username });
-
-    res.render("user/profile", { user: user, favorites: favorites, uploads: uploads });
+    /*     const favorites = await Book.find({ username: { $in: user.favorites } });
+    const uploads = await Book.find({ uploader: user.username });*/
+    res.render("user/profile", {
+      user: user,
+    });
   } catch (err) {
     console.error(err);
     res.status(500).send("Error al obtener los datos del usuario");
   }
 };
-
-
 
 export default {
   create,
