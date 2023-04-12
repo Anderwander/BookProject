@@ -67,10 +67,11 @@ const update = async (req, res) => {
 };
 
 
-
-
-
-
+const deletes = async (req, res) => {
+  let username = req.params.username;
+  let result = await userController.deletes(username);
+  res.redirect("/users");
+};
 
 export default {
   //showProfile,

@@ -1,11 +1,8 @@
-/*
-Mongoose model for User
-*/
 import mongoose from "../config/mongoose.js";
 import bcrypt from "bcrypt";
 
-
 const userSchema = new mongoose.Schema({
+
     username: {
         type: String,
         required: true,
@@ -29,18 +26,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+
 });
 
-
 // add verification methods to userSchema
-userSchema.methods.verifyPassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
+userSchema.methods.verifyPassword = function (password) {
+  return bcrypt.compareSync(password, this.password);
 };
 
 const User = mongoose.model("user", userSchema);
 
-
 export default User;
-
-
-

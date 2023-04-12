@@ -3,7 +3,6 @@ import Sequelize from "sequelize";
 import User from "./usersql.js";
 import Book from "./book.js";
 
-
 const Wish = connection.define(
   "user_has_wishes",
   {

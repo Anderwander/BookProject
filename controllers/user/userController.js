@@ -4,10 +4,6 @@ import Usersql from "../../models/usersql.js";
 import Book from "../../models/book.js";
 
 
-
-
-
-
 /* const show = async (req, res) => {
   const userId = req.params.id;
   const books = await Book.find();
@@ -19,10 +15,6 @@ import Book from "../../models/book.js";
 
 
  */
-
-
-
-
 
 // crear usuario
 const create = async (req, res) => {
@@ -131,14 +123,11 @@ const registerForm = async (req, res) => {
 };
 
 
-
-
 const updateForm = async (req, res) => {
   let username = req.params.username;
   let user = await getByUsername(username);
   res.render("user/edit", { userToEdit: user });
 };
-
 
 // Get all users
 const getAll = async (req, res) => {
@@ -146,7 +135,7 @@ const getAll = async (req, res) => {
     const auth = req.user;
     const users = await User.find();
     console.log(users);
-        res.render('user/list',{users: users,auth:auth});
+    res.render("user/list", { users: users, auth: auth });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -155,6 +144,7 @@ const getAll = async (req, res) => {
 // Get user
 const getById = async (req, res) => {
   try {
+
       const user = await User.findById(req.params.id);
       return user; 
   } catch (error) {
@@ -175,37 +165,40 @@ return error;  }
 
 // Update user
 const update = async (req, res) => {
-  console.log("file",req.file);
-  const {password, email, role } = req.body;
+
+  console.log("file", req.file);
+  const { password, email, role } = req.body;
+
   let hashedPassword = "";
   if (password !== "") {
-      hashedPassword = await bcrypt.hash(password,10);
+    hashedPassword = await bcrypt.hash(password, 10);
   }
   try {
 
-      const user = await getByUsername(req.params.username);
-      user.password = password !== "" ? hashedPassword : user.password;
-      user.email = email !== "" ? email : user.email;
-      user.role = role !== "" ? role : user.role;
-      if (req.file) {
-          console.log("file",req.file.path.split("public")[1]);
-          user.avatar = req.file.path.split("public")[1];
-      }
-      const updatedUser = await user.save();
-      res.redirect("/users");
+    const user = await getByUsername(req.params.username);
+    user.password = password !== "" ? hashedPassword : user.password;
+    user.email = email !== "" ? email : user.email;
+    user.role = role !== "" ? role : user.role;
+    if (req.file) {
+      console.log("file", req.file.path.split("public")[1]);
+      user.avatar = req.file.path.split("public")[1];
+    }
+    const updatedUser = await user.save();
+    res.redirect("/users");
   } catch (error) {
-      res.status(409).json({ message: error.message });
+    res.status(409).json({ message: error.message });
   }
-}
+};
 
 // Delete user
 const deletes = async (req, res) => {
   try {
     let username = req.params.username;
-      await User.findOneAndRemove({username:username});
-      res.status(200).json({ message: "User deleted" });
+
+    await User.findOneAndRemove({ username: username });
+    res.status(200).json({ message: "User deleted" });
   } catch (error) {
-      res.status(404).json({ message: error.message });
+    res.status(404).json({ message: error.message });
   }
 }
 
@@ -235,6 +228,7 @@ const showProfile = async function(req, res) {
 };
 
 
+
 export default {
   create,
   login,
@@ -246,6 +240,7 @@ export default {
   logout,
   getByUsername,
   showProfile,
+
   //addFavorite,
   //removeFavorite,
   update,

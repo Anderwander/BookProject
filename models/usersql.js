@@ -2,7 +2,6 @@ import connection from "../config/orm.js";
 import Sequelize from "sequelize";
 
 
-
 const User = connection.define(
   "users",
   {
@@ -26,11 +25,5 @@ User.hasMany(Lend, {
   foreignKey: "idreceiver",
 });
 */
-
-
-
-
-
-
 
 export default User;

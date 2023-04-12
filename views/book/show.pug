@@ -6,9 +6,9 @@ block content
     img(src=`/img/${book.book_cover}`)
     p= book.synopsis
     h4= book.type
-    //-h4= book.ISBN
-    form(action=`/favs/${user.username}/favs/${book.idbook}/add/`, method="post")
-        input(type='hidden', name='idbook', value=`${idbook}`)
+
+    form(action=`/favs/${user.username}/favs/${book.idbook}/add/`, method="post") 
+        input(type='hidden', name='idbook', value=`${book.idbook}`)
         button(type="submit", class="btn") Agregar a favoritos
     a(href="/books")
         button Volver a libros

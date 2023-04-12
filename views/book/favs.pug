@@ -9,6 +9,7 @@ block content
         h2= writer
         img(src=`/img/${book.book_cover}`)
         form(method='post', action=`/users/${iduser}/favorites/${idbook}/remove`)
+
           input(type="submit", value="Eliminar de favoritos", class="btn")
   a(href="/books")
     button Volver a libros

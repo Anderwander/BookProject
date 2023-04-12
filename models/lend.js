@@ -43,7 +43,7 @@ const Lend = connection.define(
 
 Lend.belongsTo(Book, {
   foreignKey: "idbook",
-}); 
+});
 Book.hasMany(Lend, {
   foreignKey: "idbook",
 });
