@@ -4,14 +4,13 @@ import User from "./usersql.js";
 import Book from "./book.js";
 
 const Wish = connection.define(
-  "user _has_wishes",
+  "user_has_wishes",
   {
     iduser: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       foreignKey: true,
     },
-
     idbook: {
       type: Sequelize.INTEGER,
       primaryKey: true,

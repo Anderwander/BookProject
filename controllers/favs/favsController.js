@@ -4,34 +4,53 @@ import Wish from "../../models/users_has_wishes.js";
 import Usersql from "../../models/usersql.js";
 
 async function addFavorite(req, res) {
-  try {
-    const idbook = req.params.idbook;
-    const username = req.user.username;
-    console.log("username:", username);
-    console.log("idbook:", idbook);
-    // Buscar usuario
-    const user = await User.findOne({ where: { username: username } });
-    if (!user) throw new Error("El usuario no existe");
+  const idbook = req.params.idbook;
+  const username = req.user.username;
+  console.log("username:", username);
+  console.log("idbook:", idbook);
+  // Buscar usuario
+  const user = await Usersql.findOne({ username: username });
+  console.log("username:", user);
+  if (!user) throw new Error("El usuario no existe");
 
-    // Buscar libro
-    const book = await Book.findByPk(idbook);
-    if (!book) throw new Error("El libro no existe");
+  // Buscar libro
+  const book = await Book.findByPk(idbook);
+  if (!book) throw new Error("El libro no existe");
 
-    // Verificar si el libro ya está en favoritos
-    const favorite = await Wish.findById({
-      where: { username: username, idbook: idbook },
-    });
-    if (favorite) {
-      throw new Error("El libro ya está en favoritos");
-    }
-
-    // Agregar libro a favoritos
-    await Wish.create({ username: username, idbook: idbook });
-    return true;
-  } catch (error) {
-    throw new Error(error.message);
+  // Verificar si el libro ya está en favoritos
+  const isInfav = await Wish.findOne({
+    where: {
+      idbook: idbook,
+      iduser: user.iduser,
+    },
+  });
+  console.log("libro devuelto: ", isInfav);
+  if (isInfav) {
+    throw new Error("El libro ya está en favoritos");
   }
+
+  // Agregar libro a favoritos
+  await Wish.create({ iduser: user.iduser, idbook: idbook });
+  return true;
 }
+
+const showFavorites = async (req, res) => {
+  const username = req.params.username;
+  console.log("iduser es:", username);
+  const user = await Usersql.findByPk(username, {
+    include: {
+      model: Book,
+      through: {
+        model: users_has_wishes,
+        where: { iduser: user.iduser },
+      },
+    },
+  });
+  res.render("user/favs", { user });
+
+  console.error(error);
+  res.status(500).send("Ha ocurrido un error interno más o menos grande");
+};
 
 async function removeFavorite(req, res) {
   try {
@@ -61,28 +80,6 @@ async function removeFavorite(req, res) {
     throw new Error(error.message);
   }
 }
-
-const showFavorites = async (req, res) => {
-  try {
-    const { iduser } = req.params;
-    console.log("iduser:", iduser);
-    console.log(iduser);
-    const user = await Usersql.findByPk(iduser, {
-      include: {
-        model: Book,
-        through: {
-          model: users_has_wishes,
-          where: { iduser },
-        },
-      },
-    });
-
-    res.render("user/favs", { user });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Ha ocurrido un error interno");
-  }
-};
 
 export default {
   addFavorite,

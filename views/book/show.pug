@@ -7,7 +7,7 @@ block content
     p= book.synopsis
     h4= book.type
     form(action=`/favs/${user.username}/favs/${book.idbook}/add/`, method="post") 
-        input(type='hidden', name='idbook', value=`${idbook}`)
+        input(type='hidden', name='idbook', value=`${book.idbook}`)
         button(type="submit", class="btn") Agregar a favoritos
     a(href="/books")
         button Volver a libros

@@ -11,11 +11,25 @@ router.post("/:username/favs/:idbook/add", isAuthorized, (req, res) => {
   favsController
     .addFavorite(req, res)
     .then(() => {
-      res.redirect(`/users/${username}/favs`);
+      res.redirect(`/users/${req.user.username}/favs`);
     })
     .catch((error) => {
       console.error(error);
       res.status(500).send("Ha ocurrido un error interno");
+    });
+});
+
+// Mostrar lista de libros favoritos
+router.get("/:username/favs", isAuthorized, (req, res) => {
+  const username = req.params.username;
+  favsController
+    .showFavorites(username)
+    .then((user) => {
+      res.render("user/favs", { user });
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send("Ha ocurrido un error interno mazo tocho");
     });
 });
 
@@ -27,20 +41,6 @@ router.post("/:iduser/favs/:idbook/remove", isAuthorized, (req, res) => {
     .removeFavorite(iduser, idbook)
     .then(() => {
       res.redirect(`/users/${iduser}/favs`);
-    })
-    .catch((error) => {
-      console.error(error);
-      res.status(500).send("Ha ocurrido un error interno");
-    });
-});
-
-// Mostrar lista de libros favoritos
-router.get("/:iduser/favs", isAuthorized, (req, res) => {
-  const iduser = req.params.iduser;
-  favsController
-    .showFavorites(iduser)
-    .then((user) => {
-      res.render("user/favs", { user });
     })
     .catch((error) => {
       console.error(error);

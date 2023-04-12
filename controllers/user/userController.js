@@ -186,7 +186,7 @@ const update = async (req, res) => {
 const deletes = async (req, res) => {
   try {
     let username = req.params.username;
-    await User.findOneAndRemove(username);
+    await User.findOneAndRemove({ username: username });
     res.status(200).json({ message: "User deleted" });
   } catch (error) {
     res.status(404).json({ message: error.message });
