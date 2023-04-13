@@ -53,26 +53,38 @@ const showFavorites = async (req, res) => {
 };
 
 async function removeFavorite(req, res) {
-  const { username, idbook } = req.params;
+  const idbook = req.params.idbook;
+  const username = req.params.username;
   console.log("username:", username);
   console.log("idbook:", idbook);
   // Buscar usuario
-  const user = await Usersql.findOne({ where: { username: username } });
+  const user = await User.findOne({ username: username });
+  console.log("username:", user);
   if (!user) throw new Error("El usuario no existe");
+
   // Buscar libro
   const book = await Book.findByPk(idbook);
   if (!book) throw new Error("El libro no existe");
 
   // Verificar si el libro fue agregado a favoritos
-  const favorite = await Wish.findOne({
-    where: { username: username, idbook: idbook },
+  const isInfav = await Wish.findOne({
+    where: {
+      idbook: idbook,
+      username: user.username,
+    },
   });
-  if (!favorite) {
-    throw new Error("El libro no fue agregado a favoritos");
+  console.log("libro devuelto: ", isInfav);
+  if (isInfav) {
+    // Eliminar libro de favoritos
+    await Wish.destroy({
+      where: {
+        idbook: idbook,
+        username: user.username,
+      },
+    });
+    console.log("Libro eliminado correctamente");
+    return true;
   }
-  // Eliminar libro de favoritos
-  await favorite.destroy(book);
-  return true;
 }
 
 export default {
