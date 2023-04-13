@@ -47,4 +47,10 @@ router.post("/delete/:id", isAdminOrOwner, (req, res) => {
   // res.send("Eliminar un libro con id " + req.params.id);
 });
 
+// eliminar un libro mio
+router.post("/delete/:id", isAdminOrOwner, (req, res) => {
+  bookController.deleteMyBook(req, res);
+  // res.send("Eliminar un libro con id " + req.params.id);
+});
+
 export default router;

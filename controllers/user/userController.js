@@ -220,9 +220,6 @@ const showProfile = async function (req, res) {
       res.status(404).send("Usuario no encontrado");
       return;
     }
-
-    /*     const favorites = await Book.find({ username: { $in: user.favorites } });
-    const uploads = await Book.find({ uploader: user.username });*/
     res.render("user/profile", {
       user: user,
     });

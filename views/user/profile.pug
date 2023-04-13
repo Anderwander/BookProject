@@ -33,8 +33,8 @@ block content
                     li  
                         a(href=`/books/book/${book.idbook}`) 
                             img(src=`/img/${book.book_cover}`, class="book-cover")
-                        form(action=`/${user.username}/favs/${book.book_cover}/remove`, method="post")
-                            input(type="submit", value="Eliminar", class="btn")
+                        form(action=`/books/delete/${book.idbook}`, method="post")
+                                    input(type="submit", value="Eliminar", class="btn")
         else
             p No se han añadido libros a tu colección. 
 

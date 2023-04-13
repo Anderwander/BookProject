@@ -102,12 +102,26 @@ const deletes = async (idbook) => {
   }
 };
 
+const deleteMyBook = async (idbook) => {
+  try {
+    let book = await Book.destroy({
+      where: {
+        idbook: idbook,
+      },
+    });
+    return [0, book];
+  } catch (error) {
+    return [1, error];
+  }
+};
+
 export default {
   getAll,
   getById,
   create,
   update,
   deletes,
+  deleteMyBook,
   //addFavorite,
   //removeFavorite,
   //getFavorites

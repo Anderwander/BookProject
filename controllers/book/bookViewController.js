@@ -100,6 +100,12 @@ const deletes = async (req, res) => {
   res.redirect("/books");
 };
 
+const deleteMyBook = async (req, res) => {
+  let idbook = req.params.id;
+  let result = await bookController.deleteMyBook(idbook);
+  res.redirect("/books");
+};
+
 export default {
   getAll,
   getById,
@@ -108,4 +114,5 @@ export default {
   update,
   updateForm,
   deletes,
+  deleteMyBook,
 };
