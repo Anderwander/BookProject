@@ -11,11 +11,13 @@ body
                 ul 
                     a(href="/") 
                         li Home
-                    a(href="/books") 
-                        li libros
                     if auth
+                        a(href="/books") 
+                            li Libros
+                        a(href=`/users/user/profile/${username}`)
+                            li Mi perfil
                         a(href="/users") 
-                            li Usuarios
+                            li Comunidad
                         a(href="/logout") 
                             li Logout
                     else 
@@ -33,29 +35,31 @@ body
             a(href="/aboutus") About Us
         li
             a(href="/contacto") Contacto
+        li  
+            a(href="/sliceFirst") Prueba Slice 
         li
             a(href="/privacidad") Politica de privacidad
-        br
-    #center
+        
+        br 
         a(href="#")
         img(src="img/logofooter.jpg", alt="Logo", width="100", height="100")
-    ul#redes
+    ul(class="redes")
         li
-        a(href="#")
-            img(src="img/fb.jpg", id="iconos", alt="Facebook")
-        br
+            a(href="#")
+                img(src="img/fb.jpg", id="iconos", alt="Facebook")
+
         li
-        a(href="#")
-            img(src="img/inst.jpg", id="iconos", alt="Instagram")
-        br
+            a(href="#")
+                img(src="img/inst.jpg", id="iconos", alt="Instagram")
+        
         li
-        a(href="#")
-            img(src="img/lin.jpg", id="iconos", alt="LinkedIn")
-        br
+            a(href="#")
+                img(src="img/lin.jpg", id="iconos", alt="LinkedIn")
+        
         li
-        a(href="#")
-            img(src="img/tw.jpg", id="iconos", alt="Twitter")
-        br
+            a(href="#")
+                img(src="img/tw.jpg", id="iconos", alt="Twitter")
+        
     br
     | Booktinder.Copyright © 2023
     br

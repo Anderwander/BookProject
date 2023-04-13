@@ -211,15 +211,16 @@ const deletes = async (req, res) => {
   }
 };
 
-const showProfile = async function (req, res) {
+const showProfiles = async function (req, res) {
   const username = req.params.username;
 
   try {
-    const user = await getByUsername(req.params.username);
+    const user = await getByUsername(username);
     if (!user) {
       res.status(404).send("Usuario no encontrado");
       return;
     }
+
     res.render("user/profile", {
       user: user,
     });
@@ -228,6 +229,26 @@ const showProfile = async function (req, res) {
     res.status(500).send("Error al obtener los datos del usuario");
   }
 };
+/* 
+const showMyProfile = async function (req, res) {
+  console.log("el usuario es: ", username); 
+  const username = req.user.username;
+  console.log("el usuario es: ", username);
+  try {
+    const user = await getByUsername(req.user.username);
+    if (!user) {
+      res.status(404).send("Usuario no encontrado");
+      return;
+    }
+
+    res.render("user/profile", {
+      user: user,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error al obtener los datos del usuario");
+  }
+}; */
 
 export default {
   create,
@@ -239,8 +260,8 @@ export default {
   getById,
   logout,
   getByUsername,
-  showProfile,
-
+  showProfiles,
+  //showMyProfile,
   //addFavorite,
   //removeFavorite,
   update,
