@@ -1,4 +1,4 @@
-extends ../layout
+extends ../index
 
 block content
   link(rel="stylesheet", href="/style.css")
@@ -15,8 +15,10 @@ block content
       tbody
         each book in search
           tr
-            //-td= book.title
-            //-td= book.writer 
+            
+           
             td
               a(href=`/books/book/${book.idbook}`)
                 img(src=`/img/${book.book_cover}`, class="book-cover")
+            td= book.title
+            td= book.writer 

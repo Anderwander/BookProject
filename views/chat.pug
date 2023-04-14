@@ -1,0 +1,36 @@
+extends index
+
+block content
+
+    nav.navbar-dark.bg-dark
+      a.nav.navbar-brand.mx-auto(href="/") Chat
+    div.card.col-md-4.mx-auto.mt-5#nick-wrap
+      div.card-header
+        h4 Introduce tu usuario
+      p#nick-error
+      div.card-body
+        form#nick-form
+          input.form-control#nick-name(type="text")
+          button.btn.btn-primary.mt-3#nick-btn(type="submit") Enviar
+
+    div.container#content-wrap
+      div.row
+        div.col-md-7.mx-auto.mt-5
+          div.card
+            div.card-header
+              h4 Chat
+            div.card-body#chat
+            form#messages-form.card-footer
+              div.input-group
+                input.form-control(type="text" id="message")
+                div.input-group-append
+                  button.btn.btn-primary.mt-3#message-btn(type="submit") Enviar
+        div.col-md-3.mx-auto.mt-5
+          div.card
+            div.card-header
+              h4 Usuarios conectados
+            div.card-body
+              div#usernames
+    script(src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous")
+    script(src="./socket.io/socket.io.js" charset="UTF-8")
+    script(src="./js/main.js")

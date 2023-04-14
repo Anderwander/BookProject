@@ -42,18 +42,8 @@ router.post(
   }
 );
 
-// Mostrar lista de libros favoritos
-/* router.get("/:username/favs", isAuthorized, (req, res) => {
-  const username = req.params.username;
-  favsController
-    .showFavorites(username)
-    .then((user) => {
-      res.render("user/favs", { user });
-    })
-    .catch((error) => {
-      console.error(error);
-      res.status(500).send("Ha ocurrido un error interno mazo tocho");
-    });
-}); */
+router.get("/favs", function (req, res) {
+  res.render("/favs");
+});
 
 export default router;

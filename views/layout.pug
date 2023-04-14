@@ -1,65 +1,50 @@
-hmtl
-    head 
-        title Book Tinder 
-        link(rel="stylesheet", href="/css/style.css")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap", rel="stylesheet")
-body 
-    header
-        block nav
-            nav   
-                ul 
-                    a(href="/") 
-                        li Home
-                    if auth
-                        a(href="/books") 
-                            li Libros
-                        a(href=`/users/user/profile/${username}`)
-                            li Mi perfil
-                        a(href="/users") 
-                            li Comunidad
-                        a(href="/logout") 
-                            li Logout
-                    else 
-                            a(href="/login") 
-                                li login
-                            a(href="/register") 
-                                li Registrarse
-                            
+head 
+    title Book Tinder 
+    link(rel="stylesheet", href="/css/reset.css")
+    link(rel="stylesheet", href="/css/style.css")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap", rel="stylesheet")
+
+body(class="bodySlide1") 
+    a(href="/sliceSecond") 
+        button(class="btn-slice") Siguiente
+
+    a(href="/sliceFirst")
+        button(class="btn-slice") Siguiente  
 
     main
         block content
-    footer
-    ul(class="enlaces")
-        li
-            a(href="/aboutus") About Us
-        li
-            a(href="/contacto") Contacto
-        li  
-            a(href="/sliceFirst") Prueba Slice 
-        li
-            a(href="/privacidad") Politica de privacidad
+    //- footer
+    //- ul(class="enlaces")
+    //-     li
+    //-         a(href="/aboutus") About Us
+    //-     li
+    //-         a(href="/contacto") Contacto
+    //-     li  
+    //-         a(href="/sliceFirst") Prueba Slice 
+    //-     li
+    //-         a(href="/privacidad") Politica de privacidad
         
-        br 
-        a(href="#")
-        img(src="img/logofooter.jpg", alt="Logo", width="100", height="100")
-    ul(class="redes")
-        li
-            a(href="#")
-                img(src="img/fb.jpg", id="iconos", alt="Facebook")
+    //-     br 
+    //-     a(href="#")
+    //-     img(src="img/logofooter.jpg", alt="Logo", width="100", height="100")
+    //- ul(class="redes")
+    //-     li
+    //-         a(href="#")
+    //-             img(src="img/fb.jpg", id="iconos", alt="Facebook")
 
-        li
-            a(href="#")
-                img(src="img/inst.jpg", id="iconos", alt="Instagram")
+    //-     li
+    //-         a(href="#")
+    //-             img(src="img/inst.jpg", id="iconos", alt="Instagram")
         
-        li
-            a(href="#")
-                img(src="img/lin.jpg", id="iconos", alt="LinkedIn")
+    //-     li
+    //-         a(href="#")
+    //-             img(src="img/lin.jpg", id="iconos", alt="LinkedIn")
         
-        li
-            a(href="#")
-                img(src="img/tw.jpg", id="iconos", alt="Twitter")
+    //-     li
+    //-         a(href="#")
+    //-             img(src="img/tw.jpg", id="iconos", alt="Twitter")
         
-    br
-    | Booktinder.Copyright © 2023
-    br
+    //- br
+    //- | Booktinder.Copyright © 2023
+    //- br
