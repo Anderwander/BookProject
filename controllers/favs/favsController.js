@@ -35,21 +35,22 @@ async function addFavorite(req, res) {
 }
 
 const showFavorites = async (req, res) => {
-  const username = req.user.username;
-  console.log("username es:", username);
-  const user = await User.findByPk(username, {
-    include: {
-      model: Book,
-      through: {
-        model: users_has_wishes,
-        where: { username: user.username },
+  try {
+    const username = req.user.username;
+    console.log("username es:", username);
+    const user = await User.findByPk(username, {
+      include: {
+        model: Book,
+        through: {
+          model: users_has_wishes,
+          where: { username: user.username },
+        },
       },
-    },
-  });
-  res.render("user/favs", { user });
-
-  console.error(error);
-  res.status(500).send("Ha ocurrido un error interno más o menos grande");
+    });
+    return user;
+  } catch (error) {
+    throw new Error("FATALITY");
+  }
 };
 
 async function removeFavorite(req, res) {

@@ -17,7 +17,7 @@ block content
                         tr
                             td 
                                 p= book.title
-                                a(href=`/books/book/${book.idbook}`)
+                                a(href=`/book/${book.idbook}`)
                                     img(src=`/img/${book.book_cover}`, class="book-cover")
                                 form(action=`/favs/${user.username}/favs/${book.idbook}/remove`, method="post")
                                     input(type="submit", value="Eliminar", class="btnBookOption")

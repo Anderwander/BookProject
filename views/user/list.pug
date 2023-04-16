@@ -11,9 +11,11 @@ block content
                         if user.avatar
                             img(src=`${user.avatar}`, alt="avatar", class="avatar")
                         else
-                            img(src="/img/default-avatar.jpg", alt="avatar", class="avatar")
+                            a(href=`/users/user/profile/${user.username}`, method="get")
+                                img(src="/img/default-avatar.jpg", alt="avatar", class="avatar")
+
                     td
-                        a(href=`/users/user/profile/${user.username}`, method="get")= user.username
+                        p(style="margin: auto;")= user.username
                     //- td= user.email
                     //- td= user.role
                     td 

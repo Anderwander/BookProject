@@ -29,6 +29,14 @@ body {
   background-attachment: fixed;
   background-size: 100vw 100vh;
 }
+.bodySlide6 {
+  background-color: #146c94;
+  text-align: center;
+}
+
+.logito {
+  margin-top: 124px;
+}
 
 h1 {
   color: #19a7ce;
@@ -157,6 +165,7 @@ img {
 .avatar {
   width: 56%;
   height: 92%;
+  margin: auto;
 }
 
 tr {

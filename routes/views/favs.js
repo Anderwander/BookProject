@@ -42,10 +42,12 @@ router.post(
   }
 );
 
+// Mostrar favoritos
+
 router.get("/user/favs", (req, res) => {
-  console.log("useeer: ", req.user);
-  res.render("user/favs", { user: req.user });
   //favsController.showFavorites(req, res);
+  console.log("useeer: ", req);
+  res.render("user/favs", { user: req.user });
 });
 
 export default router;
