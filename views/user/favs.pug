@@ -1,9 +1,9 @@
-extends ../layout
+extends ../index
 
 block content
     section
         h3 Libros favoritos 
-        if user.favorites.length >0
+        if  user&& user.favorites.length > 0
             ul
                 each book in user.favorites
                     li= book.title

@@ -33,10 +33,23 @@ body {
 h1 {
   color: #19a7ce;
   padding: 12% 12% 2% 12%;
+  font-size: x-large;
+  margin-bottom: 26px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+h2 {
+  color: #19a7ce;
+  padding: 12% 12% 2% 12%;
   font-size: larger;
 }
 
-h2 {
+.h2Autor {
+  padding: 0% 12% 2% 12%;
+}
+h3 {
   color: #19a7ce;
   padding: 12% 12% 2% 12%;
   font-size: larger;
@@ -56,7 +69,7 @@ nav {
 
 .navUl {
   display: flex;
-  gap: 34px;
+  gap: 50px;
 }
 ul li {
   display: inline-block;
@@ -430,6 +443,13 @@ textarea {
   box-sizing: border-box;
   margin-bottom: 10px;
 }
+button {
+  background-color: #146c94;
+  border: none;
+  border-radius: 16px;
+  padding: 8px;
+  color: white;
+}
 
 /* Estilos para el botón de envío */
 button[type="submit"] {
@@ -463,4 +483,27 @@ textarea:invalid:focus {
 input:valid,
 textarea:valid {
   border-color: #ccc;
+}
+
+.imgShow {
+  width: 56%;
+}
+
+.sinopsis {
+  margin: 16px 48px 42px 48px;
+  font-size: larger;
+  border-radius: 28px;
+}
+
+.titulitos {
+  margin: 32px 32px 16px 32px;
+  font-size: larger;
+  border-radius: 28px;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+h4 {
+  font-size: larger;
+  margin: 32px;
 }

@@ -15,7 +15,7 @@ const getAll = async (req, res) => {
 
 const getById = async (req, res) => {
   let id = req.params.id;
-  let user = req.user;
+  let user = req.username;
   let result = await bookController.getById(id);
   if (result[0] === 0) {
     let book = result[1];
@@ -58,7 +58,7 @@ const create = async (req, res) => {
 
   let result = await bookController.create(data);
   if (result[0] === 0) {
-    res.redirect("/books");
+    res.redirect("/");
   } else {
     let error = result[1];
     let errorUri = encodeURIComponent(error.message);
@@ -86,7 +86,7 @@ const update = async (req, res) => {
   let idbook = req.params.id;
   let result = await bookController.update(data, idbook);
   if (result[0] === 0) {
-    res.redirect("/books");
+    res.redirect("/");
   } else {
     let error = result[1];
     let errorUri = encodeURIComponent(error.message);
@@ -97,7 +97,7 @@ const update = async (req, res) => {
 const deletes = async (req, res) => {
   let idbook = req.params.id;
   let result = await bookController.deletes(idbook);
-  res.redirect("/books");
+  res.redirect("/");
 };
 
 const deleteMyBook = async (req, res) => {

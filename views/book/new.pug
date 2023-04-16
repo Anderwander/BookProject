@@ -1,10 +1,10 @@
-extends ../index
+extends ../layout
 
 block content
     h2 Sube un libro
     if error
         p=error
-    form(action="/books" method="POST", enctype="multipart/form-data", class="formNewBook")
+    form(action="/" method="POST", enctype="multipart/form-data", class="formNewBook")
         label(for="title") Titulo
         input(type="text" name="title" id="title" required)
         br

@@ -87,6 +87,7 @@ async function removeFavorite(userId, bookId) {
  */
 // login
 const login = async (req, res) => {
+  console.log("WE are logggin in");
   const username = req.body.username.toLowerCase();
   let user = await User.findOne({ username: username });
   if (!user) {
@@ -96,6 +97,8 @@ const login = async (req, res) => {
   let password = req.body.password;
   if (await bcrypt.compare(password, user.password)) {
     // user.password del has y el otro sin ecncriptacion
+    req.user = user;
+    console.log("USIH:: ", user);
     res.send("Usuario y contraseña correctos");
   } else {
     res.status(401).send("Contraseña incorrecta");
@@ -229,26 +232,26 @@ const showProfiles = async function (req, res) {
     res.status(500).send("Error al obtener los datos del usuario");
   }
 };
-/* 
+
 const showMyProfile = async function (req, res) {
-  console.log("el usuario es: ", username); 
+  console.log("el usuario es: ", username);
   const username = req.user.username;
   console.log("el usuario es: ", username);
   try {
-    const user = await getByUsername(req.user.username);
+    const user = await getByUsername(username);
     if (!user) {
       res.status(404).send("Usuario no encontrado");
       return;
     }
 
-    res.render("user/profile", {
+    res.render("user/myProfile", {
       user: user,
     });
   } catch (err) {
     console.error(err);
     res.status(500).send("Error al obtener los datos del usuario");
   }
-}; */
+};
 
 export default {
   create,

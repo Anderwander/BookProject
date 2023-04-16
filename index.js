@@ -1,7 +1,7 @@
 import express from "express";
 import routerAPI from "./routes/api/router.js";
 import routerView from "./routes/views/router.js";
-import express_session from "express-session";
+import session from "express-session";
 import passport from "./config/passport.js";
 import aboutUsRouter from "./routes/views/aboutus.js";
 import contactoRouter from "./routes/views/contacto.js";
@@ -13,7 +13,6 @@ import favRouter from "./routes/views/favs.js";
 import chatRouter from "./routes/views/chat.js";
 
 const app = express();
-
 app.use("/", aboutUsRouter);
 app.use("/", contactoRouter);
 app.use("/", privacidadRouter);
@@ -24,14 +23,18 @@ app.use("/", favRouter);
 app.use("/", chatRouter);
 
 app.use(express.static("public")); //carpeta publica para meter el css lo del front
-app.use(
+
+/*app.use(
   express_session({
     secret: "lima",
     resave: false,
-    saveUninitialized: false,
-  })
-);
+    //saveUninitialized: false,
 
+    saveUninitialized: true,
+  })
+);*/
+
+app.use(session({ secret: "lima" }));
 app.use(passport.initialize());
 app.use(passport.session());
 

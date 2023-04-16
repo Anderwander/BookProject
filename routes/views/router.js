@@ -10,13 +10,23 @@ import favsRouter from "./favs.js";
 const router = Router();
 
 //router.use("/lends", lendRouter);
-router.use("/books", bookRouter);
+router.use("/", bookRouter);
 router.use("/users", isAuthorized, userRouter);
 router.use("/", authRouter);
 router.get("/", (req, res) => {
   const auth = req.user;
-  res.render("index", { auth });
+  res.render("index", { user: auth });
+  res.render("users/user/profile", { user: auth });
+  //.render("users/fav", { user: auth });
 });
+router.get("/users", (req, res) => {
+  const auth = req.user;
+
+  res.render("index", { user: auth });
+  res.render("users/user/profile", { user: auth });
+  res.render("users/fav", { user: auth });
+});
+
 router.use("/search", searchRouter);
 router.use("/favs", favsRouter);
 

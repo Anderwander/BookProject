@@ -1,35 +1,7 @@
-head 
-    title Book Tinder 
-    link(rel="stylesheet", href="/css/reset.css")
-    link(rel="stylesheet", href="/css/style.css")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap", rel="stylesheet")
-body
-    header
-        nav   
-            ul(class="navUl") 
-                
-                    a(href="/books") 
-                        img(src="img/casa.png", id="iconos", alt="home")
-                        
-                    a(href=`/users/user/profile/${username}`)
-                        img(src="img/user.png", id="iconos", alt="usuario")
-                        
-                    a(href="/books/new")
-                        img(src="img/mas.png", id="iconos", alt="añadir")
-                    
-                    a(href="/users") 
-                        img(src="img/comunity.png", id="iconos", alt="añadir")
-                        
-                    a(href="/user/favs") 
-                        img(src="img/heartFav.png", id="iconos", alt="favoritos")
-                        //-li no funchona
-                    a(href="/logout") 
-                        img(src="img/logout.png", id="iconos", alt="favoritos")
-                                            
-                
-main
-    block content
+extends layout
+
+  
+block content
 //- block content
 //-     link(rel="stylesheet", href="/style.css") 
 //-     h1= title 

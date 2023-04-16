@@ -42,8 +42,10 @@ router.post(
   }
 );
 
-router.get("/favs", function (req, res) {
-  res.render("/favs");
+router.get("/user/favs", (req, res) => {
+  console.log("useeer: ", req.user);
+  res.render("user/favs", { user: req.user });
+  //favsController.showFavorites(req, res);
 });
 
 export default router;

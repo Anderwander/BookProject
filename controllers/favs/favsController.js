@@ -4,7 +4,7 @@ import Wish from "../../models/users_has_wishes.js";
 
 async function addFavorite(req, res) {
   const idbook = req.params.idbook;
-  const username = req.params.username;
+  const username = req.user.username;
   console.log("username:", username);
   console.log("idbook:", idbook);
   // Buscar usuario
@@ -35,7 +35,7 @@ async function addFavorite(req, res) {
 }
 
 const showFavorites = async (req, res) => {
-  const username = req.params.username;
+  const username = req.user.username;
   console.log("username es:", username);
   const user = await User.findByPk(username, {
     include: {

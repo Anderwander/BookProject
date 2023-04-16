@@ -1,10 +1,10 @@
-extends ../index
+extends ../layout
 
 block content
     h1 Editar un libro
     br
     br
-    form(action=`/books/edit/${book.idbook}` method="POST")
+    form(action=`/edit/${book.idbook}` method="POST")
         label(for="book_cover") Portada 
         input(type="file" name="book_cover" id="book_cover" value=book.book_cover)
         br
@@ -18,5 +18,5 @@ block content
        
         input(type="hidden", name ="password", value="mi-contraseña")
         input(type="submit", class="btn", value="Guardar")
-    a(href="/books/update")
+    a(href="/")
         button Volver 

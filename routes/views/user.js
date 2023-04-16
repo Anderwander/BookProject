@@ -53,8 +53,8 @@ router.get("/user/profile/:username", isAuthorized, (req, res) => {
 });
 
 // Ruta de perfil de usuario
-/* router.get("/user/profile/:username", isAuthorized, (req, res) => {
-  userController.showMyProfile(req, res);
-}); */
+// router.get("/user/myProfile/:username", isAuthorized, (req, res) => {
+//   userController.showMyProfile(req, res);
+// });
 
 export default router;
