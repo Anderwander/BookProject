@@ -7,6 +7,7 @@ const router = Router();
 
 router.get("/", isAuthorized, (req, res) => {
   bookController.getAll(req, res);
+  // res.render("book/list", { books: result[1], user: user, route: "list" });
   // res.send("Mostrar todos los libros");
 });
 

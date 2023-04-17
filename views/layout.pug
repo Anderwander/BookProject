@@ -15,24 +15,29 @@ block jeje
                     img(src="/img/rueda-dentada.png", id="iconorueda", alt="configuracion")
         nav   
             ul(class="navUl") 
-                
-                    a(href="/") 
-                        img(src="/img/casa.png", id="iconos", alt="homess")
-                    a(href="/users") 
-                        img(src="/img/comunity.png", id="iconos", alt="añadir")
-                        
-                    a(href="/new")
-                        img(src="/img/mas.png", id="iconos", alt="añadir")
                     
-                    a(href="/favs/user/favs") 
-                        img(src="/img/heartFav.png", id="iconos", alt="favoritos")
-                    if user   
-                        a(href=`/users/user/profile/${user.username}`)
-                            img(src="/img/user.png", id="iconos", alt="usuario")
+                    li 
+                        a(href="/", id="iconos")
+                            img(src="/img/casa.png", id="iconos", alt="homess")
+                    li    
+                        a(href="/users", class="focus") 
+                            img(src="/img/comunity.png", id="iconos", alt="añadir")
+                    li        
+                        a(href="/new", class="focus")
+                            img(src="/img/mas.png", id="iconos", alt="añadir")
+                    li     
+                        a(href="/favs/user/favs", class="focus") 
+                            img(src="/img/heartFav.png", id="iconos", alt="favoritos")
                         
+                    li    
+                        if user 
+
+                            a(href=`/users/user/profile/${user.username}`, class="focus")
+                                img(src="/img/user.png", id="iconos", alt="usuario")
+                            
                         //- a(href="/logout") 
                         //-     img(src="/img/logout.png", id="iconos", alt="logout")
-                                            
+                         class="#{route === "list" ? 'active' : ''}")                    
                
 main
     
