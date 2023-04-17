@@ -29,7 +29,12 @@ const getAll = async (req, res) => {
     });
 
     console.log(results);
-    res.render("search/list", { books: books, query: query, search: books });
+    res.render("search/list", {
+      books: books,
+      query: query,
+      search: books,
+      user: req.user,
+    });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
