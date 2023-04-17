@@ -4,7 +4,11 @@ const getAll = async (req, res) => {
   let result = await bookController.getAll();
   let user = req.user;
   if (result[0] === 0) {
-    res.render("book/list", { books: result[1], user: user }); // llamamos al layout
+    res.render(
+      "book/list",
+
+      { books: result[1], user: user, route: "list" }
+    ); // llamamos al layout
   } else {
     let error = result[1];
     res.status(500).send({
@@ -35,13 +39,14 @@ const getById = async (req, res) => {
 };
 
 const createForm = async (req, res) => {
+  let user = req.user;
   let results = await bookController.getAll();
   let error = req.query.error;
   if (results[0] === 1 || results[1] === []) {
     res.render("book/new", { error: error });
   } else {
     let book = results[1];
-    res.render("book/new", { book: book, error: error });
+    res.render("book/new", { book: book, error: error, user: user });
   }
 };
 

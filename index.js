@@ -11,6 +11,7 @@ import sliceSecond from "./routes/views/sliceSecond.js";
 import sliceThird from "./routes/views/sliceThird.js";
 import chatRouter from "./routes/views/chat.js";
 import slice321 from "./routes/views/slice321.js";
+import slice0 from "./routes/views/slice0.js";
 
 const app = express();
 app.use("/", aboutUsRouter);
@@ -20,6 +21,7 @@ app.use("/", sliceFirst);
 app.use("/", sliceSecond);
 app.use("/", sliceThird);
 app.use("/", slice321);
+app.use("/", slice0);
 app.use("/", chatRouter);
 
 app.use(express.static("public")); //carpeta publica para meter el css lo del front
