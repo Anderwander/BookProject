@@ -16,7 +16,14 @@ block content
                             img(src=`/img/${book.book_cover}`, class="book-cover")
                     
                     td 
-                        if auth && auth.role == "admin"
+                        form(action=`/books/book/${book.idbook}`, method="get", class="formBookOption")
+                        input(type="submit", name="btn-reservado", value="Reservar", class="btnBookOption btn-reservado")
+                        script(src="reserveController.js")
+                        form(action=`/books/book/${book.idbook}`, method="get", class="formBookOption")
+                        a(href="/chat")
+                            input(type="submit", name="chat", value="Chat", class="btnBookOption")
+                    
+                        if user && user.role == "admin"
                             form(action=`/edit/${book.idbook}`, method="get", class="formBookOption")
                                 input(type="submit", name="btn edit", value="Editar", class="btnBookOption")
                             form(action=`/delete/${book.idbook}`, method="post", class="formBookOption")

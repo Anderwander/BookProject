@@ -2,9 +2,9 @@ import bookController from "./bookController.js";
 
 const getAll = async (req, res) => {
   let result = await bookController.getAll();
-  let auth = req.user;
+  let user = req.user;
   if (result[0] === 0) {
-    res.render("book/list", { books: result[1], auth: auth }); // llamamos al layout
+    res.render("book/list", { books: result[1], user: user }); // llamamos al layout
   } else {
     let error = result[1];
     res.status(500).send({
@@ -15,7 +15,7 @@ const getAll = async (req, res) => {
 
 const getById = async (req, res) => {
   let id = req.params.id;
-  let user = req.username;
+  let user = req.user;
   let result = await bookController.getById(id);
   if (result[0] === 0) {
     let book = result[1];
@@ -103,7 +103,7 @@ const deletes = async (req, res) => {
 const deleteMyBook = async (req, res) => {
   let idbook = req.params.id;
   let result = await bookController.deleteMyBook(idbook);
-  res.redirect("/books");
+  res.redirect("/");
 };
 
 export default {

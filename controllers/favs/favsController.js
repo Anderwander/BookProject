@@ -1,10 +1,11 @@
 import Book from "../../models/book.js";
 import User from "../../models/user.js";
 import Wish from "../../models/users_has_wishes.js";
+import Usersql from "../../models/usersql.js";
 
 async function addFavorite(req, res) {
   const idbook = req.params.idbook;
-  const username = req.user.username;
+  const username = req.params.username;
   console.log("username:", username);
   console.log("idbook:", idbook);
   // Buscar usuario
@@ -25,7 +26,7 @@ async function addFavorite(req, res) {
   });
   console.log("libro devuelto: ", isInfav);
   if (isInfav) {
-    throw new Error("El libro ya está en favoritos");
+    return false;
   }
 
   // Agregar libro a favoritos
@@ -34,22 +35,29 @@ async function addFavorite(req, res) {
   return true;
 }
 
+const renderFavorites = async (req, res) => {
+  const user = await showFavorites(req, res);
+  console.log("useeer: ", req);
+  res.render("user/favs", { user: user });
+};
+
 const showFavorites = async (req, res) => {
   try {
     const username = req.user.username;
     console.log("username es:", username);
-    const user = await User.findByPk(username, {
+    const user = await Usersql.findByPk(username, {
       include: {
         model: Book,
         through: {
-          model: users_has_wishes,
-          where: { username: user.username },
+          model: Wish,
+          where: { username: username },
         },
+        as: "favorites",
       },
     });
     return user;
   } catch (error) {
-    throw new Error("FATALITY");
+    throw new Error(error);
   }
 };
 
@@ -92,4 +100,5 @@ export default {
   addFavorite,
   removeFavorite,
   showFavorites,
+  renderFavorites,
 };

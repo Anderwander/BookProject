@@ -16,18 +16,18 @@ router.use("/", authRouter);
 router.get("/", (req, res) => {
   const auth = req.user;
   res.render("index", { user: auth });
-  res.render("users/user/profile", { user: auth });
-  res.render("users/fav", { user: auth });
+  // res.render("users/user/profile", { user: auth });
+  //res.render("users/fav", { user: auth });
 });
-router.get("/users", (req, res) => {
-  const auth = req.user;
+// router.get("/users", (req, res) => {
+//   const auth = req.user;
 
-  res.render("index", { user: auth });
-  res.render("users/user/profile", { user: auth });
-  res.render("users/fav", { user: auth });
-});
+//   res.render("index", { user: auth });
+//   res.render("users/user/profile", { user: auth });
+//   res.render("users/fav", { user: auth });
+// });
 
 router.use("/search", searchRouter);
-router.use("/user/favs", favsRouter);
+router.use("/favs", favsRouter);
 
 export default router;

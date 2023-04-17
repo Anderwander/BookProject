@@ -1,20 +1,16 @@
 import { Router } from "express";
-import {
-  isAuthorized,
-  isAdmin,
-  isAdminOrOwner,
-} from "../../middlewares/auth.js";
+import { isAuthorized, isAdminOrOwner } from "../../middlewares/auth.js";
 import bookController from "../../controllers/book/bookViewController.js";
 import upload from "../../middlewares/multer.js";
 
 const router = Router();
 
-router.get("/", [isAuthorized, upload.single("book_cover")], (req, res) => {
+router.get("/", isAuthorized, (req, res) => {
   bookController.getAll(req, res);
   // res.send("Mostrar todos los libros");
 });
 
-router.get("/book/:id", (req, res) => {
+router.get("/book/:id", isAuthorized, (req, res) => {
   bookController.getById(req, res);
   // res.send("Mostrar un libro con id " + req.params.id);
 });

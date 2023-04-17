@@ -7,20 +7,20 @@ block content
     p(class="titulitos") Sinopsis
     p(class="sinopsis")= book.synopsis
     p(class="titulitos") Género:
-    h4=`Género:${book.type}`
+    h4=book.type 
 
-    form(action=`/favs/${username}/favs/${book.idbook}/add/`, method="post") 
-        input(type='hidden', name='idbook', value=`${book.idbook}`)
-        button(type="submit", class="sinopsis") Agregar a favoritos
-    a(href="/")
-        button Volver a libros
-    form(action=`/delete/${book.idbook}`, method="post")
-            input(type="submit", value="Eliminar", class="sinopsis")
-    if role === "admin"|| username === book.username 
-        a(href=`/books/edit/${book.idbook}`)
-            button Editar
-        form(action=`/books/delete/${book.idbook}`, method="post",class="formBookOption")
-            input(type="submit", value="Eliminar", class="btn")
+        form(action=`/favs/${user.username}/favs/${book.idbook}/add/`, method="post") 
+            input(type='hidden', name='idbook', value=`${book.idbook}`)
+            button(type="submit", class="sinopsis") Agregar a favoritos
+        a(href="/")
+            button Volver a libros
+        form(action=`/delete/${book.idbook}`, method="post")
+                input(type="submit", value="Eliminar", class="sinopsis")
+        if user.role === "admin"|| user.username === book.username 
+            a(href=`/books/edit/${book.idbook}`)
+                button Editar
+            form(action=`/books/delete/${book.idbook}`, method="post",class="formBookOption")
+                input(type="submit", value="Eliminar", class="btn")
 
 
 

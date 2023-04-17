@@ -20,10 +20,10 @@ block jeje
                     a(href="/new")
                         img(src="/img/mas.png", id="iconos", alt="añadir")
                     
-                    a(href="/user/favs") 
+                    a(href="/favs/user/favs") 
                         img(src="/img/heartFav.png", id="iconos", alt="favoritos")
-                    if auth    
-                        a(href=`/users/user/profile/${auth.username}`)
+                    if user   
+                        a(href=`/users/user/profile/${user.username}`)
                             img(src="/img/user.png", id="iconos", alt="usuario")
                         
                         //- a(href="/logout") 

@@ -1,4 +1,4 @@
-extends ../index
+extends ../layout
 
 block content
   link(rel="stylesheet", href="/style.css")
@@ -18,7 +18,6 @@ block content
             
            
             td
-              a(href=`/books/book/${book.idbook}`)
+              a(href=`/book/${book.idbook}`)
                 img(src=`/img/${book.book_cover}`, class="book-cover")
-            td= book.title
-            td= book.writer 
+            

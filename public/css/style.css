@@ -111,12 +111,17 @@ nav li {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   border-radius: 5px;
   width: 75px;
   padding: 2px;
   margin: 0;
+
+  text-align: center;
+}
+.btn-reservado.clicked {
+  background-color: red;
 }
 
 .btn-slice {
@@ -179,7 +184,7 @@ td {
   display: flex; /* or inline-flex */
   flex-wrap: wrap;
   width: 100%;
-  gap: 9px;
+  gap: 2px;
   margin: 12px 0px;
 }
 
@@ -456,7 +461,7 @@ button {
   background-color: #146c94;
   border: none;
   border-radius: 16px;
-  padding: 8px;
+  padding: 12px 65px;
   color: white;
 }
 

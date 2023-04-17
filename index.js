@@ -9,7 +9,6 @@ import privacidadRouter from "./routes/views/privacidad.js";
 import sliceFirst from "./routes/views/sliceFirst.js";
 import sliceSecond from "./routes/views/sliceSecond.js";
 import sliceThird from "./routes/views/sliceThird.js";
-import favRouter from "./routes/views/favs.js";
 import chatRouter from "./routes/views/chat.js";
 import slice321 from "./routes/views/slice321.js";
 
@@ -21,7 +20,6 @@ app.use("/", sliceFirst);
 app.use("/", sliceSecond);
 app.use("/", sliceThird);
 app.use("/", slice321);
-app.use("/", favRouter);
 app.use("/", chatRouter);
 
 app.use(express.static("public")); //carpeta publica para meter el css lo del front

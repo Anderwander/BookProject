@@ -2,9 +2,9 @@ import userController from "./userController.js";
 
 const getAll = async (req, res) => {
   let result = await userController.getAll();
-  let auth = req.user;
+  let user = req.user;
   if (result[0] === 0) {
-    res.render("user/list", { users: result[1], auth: auth }); // llamamos al layout
+    res.render("user/list", { users: result[1], user: user }); // llamamos al layout
   } else {
     let error = result[1];
     res.status(500).send({

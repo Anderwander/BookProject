@@ -127,17 +127,19 @@ const registerForm = async (req, res) => {
 
 const updateForm = async (req, res) => {
   let username = req.params.username;
-  let user = await getByUsername(username);
-  res.render("user/edit", { userToEdit: user });
+  let user = req.user;
+  let userToEdit = await getByMongoUsername(username);
+  console.log("ESTE ES EL USERTOEDIT: ", userToEdit);
+  res.render("user/edit", { userToEdit: userToEdit, user: user });
 };
 
 // Get all users
 const getAll = async (req, res) => {
   try {
-    const auth = req.user;
+    const user = req.user;
     const users = await User.find();
     //console.log(users);
-    res.render("user/list", { users: users, auth: auth });
+    res.render("user/list", { users: users, user: user });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -170,11 +172,17 @@ const getByUsername = async (username) => {
         },
       ],
     });
+    console.log("USESER:", user);
     return user;
   } catch (error) {
     throw new Error(error);
     return error;
   }
+};
+
+const getByMongoUsername = async (username) => {
+  const user = await User.findOne({ username: username });
+  return user;
 };
 
 // Update user
@@ -187,7 +195,7 @@ const update = async (req, res) => {
     hashedPassword = await bcrypt.hash(password, 10);
   }
   try {
-    const user = await getByUsername(req.params.username);
+    const user = await getByMongoUsername(req.params.username);
     user.password = password !== "" ? hashedPassword : user.password;
     user.email = email !== "" ? email : user.email;
     user.role = role !== "" ? role : user.role;
@@ -233,25 +241,25 @@ const showProfiles = async function (req, res) {
   }
 };
 
-const showMyProfile = async function (req, res) {
-  console.log("el usuario es: ", username);
-  const username = req.user.username;
-  console.log("el usuario es: ", username);
-  try {
-    const user = await getByUsername(username);
-    if (!user) {
-      res.status(404).send("Usuario no encontrado");
-      return;
-    }
+// const showMyProfile = async function (req, res) {
+//   console.log("el usuario es: ", username);
+//   const username = req.user.username;
+//   console.log("el usuario es: ", username);
+//   try {
+//     const user = await getByUsername(username);
+//     if (!user) {
+//       res.status(404).send("Usuario no encontrado");
+//       return;
+//     }
 
-    res.render("user/myProfile", {
-      user: user,
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Error al obtener los datos del usuario");
-  }
-};
+//     res.render("user/myProfile", {
+//       user: user,
+//     });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).send("Error al obtener los datos del usuario");
+//   }
+// };
 
 export default {
   create,
