@@ -63,6 +63,19 @@ h3 {
   font-size: larger;
 }
 
+
+.navSup {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  padding: 22px;
+  position: fixed;
+  bottom: 625;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+}
+
 header,
 nav {
   background-color: #146c94;
@@ -79,6 +92,7 @@ nav {
   display: flex;
   gap: 50px;
 }
+
 ul li {
   display: inline-block;
   margin: 0 10px;
@@ -225,7 +239,6 @@ tbody {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  position: relative;
   z-index: 1;
   background-color: #fff;
   max-width: 360px;
@@ -406,6 +419,16 @@ footer {
   width: 30px;
   height: 30px;
 }
+
+#iconorueda{
+  width: 20px;
+  height: 20px;
+  position: fixed;
+  z-index: 2;
+  margin-top: -5px;
+}
+
+
 #lupa {
   background-color: transparent;
   width: 70px;
