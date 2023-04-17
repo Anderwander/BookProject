@@ -1,0 +1,44 @@
+html(lang="en")
+
+head 
+    title Book Tinder 
+    link(rel="stylesheet", href="/css/reset.css")
+    link(rel="stylesheet", href="/css/style.css")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap", rel="stylesheet")
+body
+block jeje 
+    header
+        nav 
+            ul(class="navSup")
+                a(href="/configuracion") 
+                    img(src="/img/rueda-dentada.png", id="iconorueda", alt="configuracion")
+        nav   
+            ul(class="navUl") 
+                    
+                    li 
+                        a(href="/", id="iconos")
+                            img(src="/img/casa.png", id="iconos", alt="homess")
+                    li    
+                        a(href="/users", class="focus") 
+                            img(src="/img/comunity.png", id="iconos", alt="añadir")
+                    li        
+                        a(href="/new", class="focus")
+                            img(src="/img/mas.png", id="iconos", alt="añadir")
+                    li     
+                        a(href="/favs/user/favs", class="focus") 
+                            img(src="/img/heartFav.png", id="iconos", alt="favoritos")
+                        
+                    li    
+                        if user 
+
+                            a(href=`/users/user/profile/${user.username}`, class="focus")
+                                img(src="/img/user.png", id="iconos", alt="usuario")
+                            
+                        //- a(href="/logout") 
+                        //-     img(src="/img/logout.png", id="iconos", alt="logout")
+                         class="#{route === "list" ? 'active' : ''}")                    
+               
+main
+    
+    block content   

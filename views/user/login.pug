@@ -1,0 +1,18 @@
+extends ../layout
+block jeje
+    form(action="/login", method="post", id="register-form")
+        label(for="username") Usuario
+        input(type="text", name="username", id="username", placeholder="nombre usuario")
+        br
+        label(for="password") Contraseña
+        input(type="password", name="password", id="password")
+        br
+        input(type="submit", value="Acceder", class="btn")
+             
+        br
+        p ¿No estás registrado?
+    a(href="/register") 
+        button(class="btn") Registrate
+
+
+       

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Chat</title>
+<!-- Este es el link para poder meter en el chat CSS de bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+</head>
+<body> 
+<!--FORMULARIO DE ACCESO-->
+<!-- Creamos el chat un formulario de acceso que recoge la información del chat, mx-auto para centrar etiqueta Chat, id que utilizaremos en js-->
+<!--nick-error para que no nos deje meter dos usuarios con el mismo nick-->
+<!--class="form-control" es un campo de bootstrap para los campos de un formulario-->
+<!--id=!nick-btn para que lo utilicemos en js cada vez que se da al botón, mt-3 es el margin top-->
+    <nav class="nav navbar-dark bg-dark">
+        <a href="/" class="nav navbar-brand mx-auto">Chat</a> 
+    </nav>
+    <div class="card col-md-4 mx-auto mt-5" id="nick-wrap">
+        <div class="card-header">
+            <h4>Introduce tu usuario</h2>
+        </div>
+        <p id="nick-error"></p> 
+        <div class="card-body">
+            <form id="nick-form">
+                <input type="text" id="nick-name" class="form-control">
+                <button type="submit"class="btn btn-primary mt-3" id="nick.btn">Enviar</button>
+            </form>
+        </div>
+    </div>
+<!-- FORMULARIO DE COMENTARIOS DEL CHAT-->
+<!--Generamos un contenedor para el layout de bootstrap con una fila y dos columnas: comentarios y usuarios conectados-->
+
+    <div class="container" id="content-wrap">
+    <!--Dentro del contenedor tenemos una fila para usuarios y mensajes-->    
+        <div clas="row">
+            <div class="col-md-7 mx-auto mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Chat</h4>
+                    </div>
+                    <div class="card-body" id="chat">
+                    </div>
+                    <form id="messages-form" class="card-footer">
+                        <div class="input-group">
+                            <input class="form-control" tyoe="text" id="message">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary mt-3" id="message-btn">Enviar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    <!--Dentro del contenedor tenemos otra fila para la lista de los usuarios que están conectados-->    
+            <div class="col-md-3 mx-auto mt-5">
+                <div class="card">
+                    <div class="card-header">
+                         <h4>Usuarios conectados</h4>
+                    </div>
+                    <div class="card-body">
+                    <div id="usernames"></div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+<!--Conectamos la librería jquery, comunicación ajax para recibir y enviar información de main.js-->
+<!--Lo hacemos con un enlace minifield para no descargar jquery: https://releases.jquery.com/-->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+   
+<!--Conexión con socket.io-->
+    <script src="socket.io/socket.io.js" charset ="UTF-8"></script>
+<!--Comprobamos que hay un usuario nuevo conectado, accediendo desde html a main.js--> 
+    <script src="./js/main.js"></script>
+
+</body>
+</html>

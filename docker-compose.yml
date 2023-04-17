@@ -1,0 +1,50 @@
+version: "3"
+services:
+  mysql:
+    image: mysql:latest # Si no funciona el docker deberia mambiar a 5.6 porque tengo esa version de mysql sino no hace falta
+    container_name: mysql-bookproject
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mi-contraseña
+      MYSQL_DATABASE: bookproject
+    ports:
+      - "3315:3306" # se puede acceder tambine sin la red
+    volumes:
+      - "./docker/mysql/mysql.cnf:/etc/mysql/config.d/my.cnf"
+      - "./docker/mysql/bookproject.sql:/docker-entrypoint-initdb.d/1bookproject.sql" #se ejecuta al principio
+      - "./docker/mysql/bookproject_data.sql:/docker-entrypoint-initdb.d/2bookproject_data.sql"
+      - ~/bookproject/mysql:/var/lib/mysql # donde se guardan los datos de mysql si pierdes del trabajo simplemte vuelves hacerlo y reconoce los datos y como si lo recuperaras
+    networks:
+      - bookproject
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo-bookproject
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: bookproject
+    ports:
+      - "27019:27017"
+    volumes:
+      - ~/bookproject/mongo:/data/db
+    networks:
+      - bookproject
+
+  node:
+    build: .
+    container_name: node-bookproject
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+      - mongo
+    networks:
+      - bookproject
+    volumes:
+      - ./:/usr/src/app
+      - exclude:/usr/src/app/node_modules/
+volumes:
+  exclude:
+networks:
+  bookproject:

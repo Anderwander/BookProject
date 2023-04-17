@@ -1,0 +1,56 @@
+extends ../index
+
+block content 
+    
+    h1 Perfil de !{user.username}
+    a(href="/new")
+        button Añadir un libro
+        
+    section
+        h3(id="librosFav") Libros favoritos 
+        table(class="table table.striped", id="books")
+            thead    
+            
+            if user.favorites.length >0
+                
+                    each book in user.favorites
+                        tr
+                            td 
+                                a(href=`/book/${book.idbook}`)
+                                    img(src=`/img/${book.book_cover}`, class="book-cover")
+                                form(action=`/favs/${user.username}/favs/${book.idbook}/remove`, method="post")
+                                    input(type="submit", value="Eliminar", class="btnBookOption")
+            else
+                p No se han añadido libros favoritos
+
+    section
+        h3 Mis libros
+        table(class="table table.striped", id="books")
+            thead   
+            if user.myBooks.length >0
+                
+                    each book in user.myBooks
+                        tr 
+                            td
+                                p=book.title
+                                    a(href=`/books/book/${book.idbook}`) 
+                                        img(src=`/img/${book.book_cover}`, class="book-cover")
+                                    form(action=`/delete/${book.idbook}`, method="post")
+                                                input(type="submit", value="Eliminar", class="btnBookOption")
+            else
+                p No se han añadido libros a tu colección. 
+    h1 Si quieres salir (que yo de ti no lo haría), haz click en el botón de abajo. 
+    a(href="/logout") 
+        button Salir 
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+       
+
+
+    

@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+    h1 Editar un libro
+    br
+    br
+    form(action=`/edit/${book.idbook}` method="POST")
+        label(for="book_cover") Portada 
+        input(type="file" name="book_cover" id="book_cover" value=book.book_cover)
+        br
+        label(for="title") Titulo
+        input(type="text" name="title" id="title" value=book.title)
+        br
+        
+        label(for="writer") Autor
+        input(type="text" name="writer" id="writer" value=book.writer)
+        br
+       
+        input(type="hidden", name ="password", value="mi-contraseña")
+        input(type="submit", class="btn", value="Guardar")
+    a(href="/")
+        button Volver 
