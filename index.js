@@ -11,12 +11,15 @@ import sliceSecond from "./routes/views/sliceSecond.js";
 import sliceThird from "./routes/views/sliceThird.js";
 import chatRouter from "./routes/views/chat.js";
 import slice321 from "./routes/views/slice321.js";
+import configuracionRouter from "./routes/views/configuracion.js";
 import slice0 from "./routes/views/slice0.js";
+
 
 const app = express();
 app.use("/", aboutUsRouter);
 app.use("/", contactoRouter);
 app.use("/", privacidadRouter);
+app.use("/", configuracionRouter);
 app.use("/", sliceFirst);
 app.use("/", sliceSecond);
 app.use("/", sliceThird);
