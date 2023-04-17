@@ -1,9 +1,9 @@
-extends ../layout
+extends ../index
 
 block content
     link(rel="stylesheet", href="/style.css")
     h1 Editar usuario
-    if userToEdit
+    if userToEdit.avatar
         img(src=`${userToEdit.avatar}`, alt="avatar", class="avatar")
     else
         img(src="/img/default-avatar.jpg", alt="avatar", class="avatar")

@@ -1,8 +1,11 @@
 import { Router } from "express";
-import { isAuthorized, isAdmin } from "../../middlewares/auth.js";
+import {
+  isAuthorized,
+  isAdmin,
+  isAdminOrOwner,
+} from "../../middlewares/auth.js";
 import upload from "../../middlewares/multer.js";
 import favsController from "../../controllers/favs/favsController.js";
-import users_has_wishes from "../../models/users_has_wishes.js";
 
 const router = Router();
 
@@ -11,42 +14,35 @@ const router = Router();
 router.post("/:username/favs/:idbook/add", isAuthorized, (req, res) => {
   favsController
     .addFavorite(req, res)
-    .then(() => {
-      res.redirect(`/users/${req.user.username}/favs`);
-    })
-    .catch((error) => {
-      console.error(error);
-      res.status(500).send("Ha ocurrido un error interno");
-    });
-});
 
-// Mostrar lista de libros favoritos
-router.get("/:username/favs", isAuthorized, (req, res) => {
-  const username = req.params.username;
-  favsController
-    .showFavorites(username)
-    .then((user) => {
-      res.render("user/favs", { user });
+    .then(() => {
+      res.redirect(`/users/user/profile/${req.params.username}`);
     })
     .catch((error) => {
       console.error(error);
-      res.status(500).send("Ha ocurrido un error interno mazo tocho");
+      res.status(500).send("Ha ocurrido un error internorl");
     });
+  //console.log("ESTO ESSSS:", req);
 });
 
 // Eliminar libro de favoritos
-router.post("/:iduser/favs/:idbook/remove", isAuthorized, (req, res) => {
-  const iduser = req.params.iduser;
-  const idbook = req.body.idbook;
+router.post("/:username/favs/:idbook/remove", isAdminOrOwner, (req, res) => {
   favsController
-    .removeFavorite(iduser, idbook)
+    .removeFavorite(req, res)
     .then(() => {
-      res.redirect(`/users/${iduser}/favs`);
+      res.redirect(`/users/user/profile/${req.user.username}`);
     })
     .catch((error) => {
       console.error(error);
-      res.status(500).send("Ha ocurrido un error interno");
+      res.status(500).send("Ha ocurrido un error interno probandoooooo");
     });
+});
+
+// Mostrar favoritos
+
+router.get("/user/favs", isAuthorized, (req, res) => {
+  console.log("USERRRRR: ", req.user);
+  favsController.renderFavorites(req, res);
 });
 
 export default router;

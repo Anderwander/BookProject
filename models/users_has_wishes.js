@@ -23,7 +23,6 @@ const Wish = connection.define(
   }
 );
 
-
 Book.belongsToMany(User, {
   through: "user_has_wishes",
   foreignKey: "idbook",
@@ -34,7 +33,17 @@ User.belongsToMany(Book, {
   through: "user_has_wishes",
   foreignKey: "username",
   otherKey: "idbook",
+  as: "favorites",
 });
 
+Book.belongsTo(User, {
+  foreignKey: "username",
+  as: "owner",
+});
+
+User.hasMany(Book, {
+  foreignKey: "username",
+  as: "myBooks",
+});
 
 export default Wish;

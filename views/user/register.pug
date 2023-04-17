@@ -1,11 +1,6 @@
 extends ../layout
-
-block content 
-    link(rel="stylesheet", href="/style.css")
-    h1 Registro
-    if error
-        p=error
-    form(action="/register", method="post",id="search-form")
+block jeje
+    form(action="/register", method="post",id="register-form")
         label(for="username") Usuario
         input(type="text", name="username", id="username", placeholder="nombre usuario",required)
         br
@@ -17,4 +12,4 @@ block content
         br
         input(type="submit", value="Registrarse", class="btn")
 
-       
+        

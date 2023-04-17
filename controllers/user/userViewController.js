@@ -2,9 +2,9 @@ import userController from "./userController.js";
 
 const getAll = async (req, res) => {
   let result = await userController.getAll();
-  let auth = req.user;
+  let user = req.user;
   if (result[0] === 0) {
-    res.render("user/list", { users: result[1], auth: auth }); // llamamos al layout
+    res.render("user/list", { users: result[1], user: user }); // llamamos al layout
   } else {
     let error = result[1];
     res.status(500).send({
@@ -39,15 +39,6 @@ const updateForm = async (req, res) => {
   res.render("user/edit", { userToEdit: user });
 };
 
-const deletes = async (req, res) => {
-  let username = req.params.username;
-  let result = await userController.deletes(username);
-  res.redirect("/users");
-};
-
-
-
-
 const update = async (req, res) => {
   let data = {
     avatar: req.body.avatar === "" ? null : req.body.avatar,
@@ -65,7 +56,6 @@ const update = async (req, res) => {
     res.redirect(`/users?error=${errorUri}`);
   }
 };
-
 
 const deletes = async (req, res) => {
   let username = req.params.username;

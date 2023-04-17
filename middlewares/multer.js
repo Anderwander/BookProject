@@ -13,8 +13,7 @@ const storage = multer.diskStorage({
     cb(null, path.join(__dirname, "public", "img"));
   },
   filename: function (req, file, cb) {
-    const name =
-      req.body.username + "-" + req.body.idbook + "-" + req.body.book_cover;
+    const name = req.user.username + "-" + req.body.title;
     cb(null, name + path.extname(file.originalname));
   },
 });

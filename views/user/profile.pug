@@ -1,30 +1,56 @@
-extends ../layout
+extends ../index
 
 block content 
-    link(rel="stylesheet", href="/style.css")
-    h1 Perfil de {user.username}
-    a(href="/books/new")
+    
+    h1 Perfil de !{user.username}
+    a(href="/new")
         button Añadir un libro
+        
     section
-        h3 Datos del perfil
-        p Nombre= user.username
-        p Email= user.email
-        p Rol= user.role
+        h3(id="librosFav") Libros favoritos 
+        table(class="table table.striped", id="books")
+            thead    
+            
+            if user.favorites.length >0
+                
+                    each book in user.favorites
+                        tr
+                            td 
+                                a(href=`/book/${book.idbook}`)
+                                    img(src=`/img/${book.book_cover}`, class="book-cover")
+                                form(action=`/favs/${user.username}/favs/${book.idbook}/remove`, method="post")
+                                    input(type="submit", value="Eliminar", class="btnBookOption")
+            else
+                p No se han añadido libros favoritos
 
     section
-        h3 Libros favoritos
-        if favorites.length === 0
-            ul
-                each book in favorites
-                    li= book.title
-        else
-            p No se han añadido libros favoritos
+        h3 Mis libros
+        table(class="table table.striped", id="books")
+            thead   
+            if user.myBooks.length >0
+                
+                    each book in user.myBooks
+                        tr 
+                            td
+                                p=book.title
+                                    a(href=`/books/book/${book.idbook}`) 
+                                        img(src=`/img/${book.book_cover}`, class="book-cover")
+                                    form(action=`/delete/${book.idbook}`, method="post")
+                                                input(type="submit", value="Eliminar", class="btnBookOption")
+            else
+                p No se han añadido libros a tu colección. 
+    h1 Si quieres salir (que yo de ti no lo haría), haz click en el botón de abajo. 
+    a(href="/logout") 
+        button Salir 
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+       
 
-    section
-        h3 Libros subidos
-        if uploads.length === 0
-            ul
-                each book in uploads
-                    li= book.title
-        else
-            p No se han subido libros
+
+    

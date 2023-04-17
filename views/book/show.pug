@@ -2,16 +2,26 @@ extends ../layout
 
 block content
     h1= book.title 
-    h2= book.writer
-    img(src=`/img/${book.book_cover}`)
-    p= book.synopsis
-    h4= book.type
+    h2(class="h2Autor")= book.writer
+    img(src=`/img/${book.book_cover}`, class="imgShow")
+    p(class="titulitos") Sinopsis
+    p(class="sinopsis")= book.synopsis
+    p(class="titulitos") Género:
+    h4=book.type 
 
-    form(action=`/favs/${user.username}/favs/${book.idbook}/add/`, method="post") 
-        input(type='hidden', name='idbook', value=`${book.idbook}`)
-        button(type="submit", class="btn") Agregar a favoritos
-    a(href="/books")
-        button Volver a libros
+        form(action=`/favs/${user.username}/favs/${book.idbook}/add/`, method="post") 
+            input(type='hidden', name='idbook', value=`${book.idbook}`)
+            button(type="submit", class="sinopsis") Agregar a favoritos
+        a(href="/")
+            button Volver a libros
+        form(action=`/delete/${book.idbook}`, method="post")
+                input(type="submit", value="Eliminar", class="sinopsis")
+        if user.role === "admin"|| user.username === book.username 
+            a(href=`/books/edit/${book.idbook}`)
+                button Editar
+            form(action=`/books/delete/${book.idbook}`, method="post",class="formBookOption")
+                input(type="submit", value="Eliminar", class="btn")
+
 
 
 

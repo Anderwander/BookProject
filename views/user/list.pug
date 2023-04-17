@@ -1,37 +1,35 @@
-extends ../layout
+extends ../index
 
 block content 
-    link(rel="stylesheet", href="/style.css")
     h1 Usuarios
-        table(class="table table-striped", id="users")
-            thead 
-                //-th Avatar
-                //-th Username
-                //-th Mail
-                //-th Rol
-                //-if auth && auth.role == "admin"
-                    th Acciones
-            tbody 
-                each user in users 
-                    tr
-                        td 
-                            if user.avatar
-                                img(src=`${user.avatar}`, alt="avatar", class="avatar")
-                            else
+    table(class="table table-striped", id="users")
+        thead 
+        tbody
+            each userInstance in users 
+                tr
+                    td 
+                        if userInstance.avatar                       
+                            a(href=`/users/user/profile/${userInstance.username}`, method="get")
+                                img(src=`${userInstance.avatar}`, alt="avatar", class="avatar")
+
+                        else
+                            a(href=`/users/user/profile/${userInstance.username}`, method="get")
                                 img(src="/img/default-avatar.jpg", alt="avatar", class="avatar")
-                        td
-                            a(href=`/users/user/profile/${user.username}`, method="get")= user.username
-                        td= user.email
-                        td= user.role
-                        td 
-                            if auth && auth.role == "admin"
-                                section(class="actions")
-                                
-                                form(action=`/users/user/edit/${user.username}`, method="get")
-                                    input(type="submit", name="btn edit", value="Editar", class="btn")
-                                form(action=`/users/user/delete/${user.username}`, method="post")
-                                    input(type="hidden", name="password", value="mi-contraseña")
-                                    input(type="submit", value="Eliminar", class="btn")
+
+                    td
+                        p(style="margin: auto;")= userInstance.username
+                    //- td= user.email
+                    //- td= user.role
+                    td 
+                        if user && user.role == "admin"
+                            form(action=`/users/user/edit/${userInstance.username}`, method="get", class="formBookOption")
+                                input(type="submit", name="btn edit", value="Editar", class= "btnBookOption")
+                            form(action=`/users/user/delete/${userInstance.username}`, method="post")
+                                input(type="submit", value="Eliminar", class="btnBookOption", class="formBookOption")
+                            
+                        //-a(href="/chat") Chat
+
+
 
 
 

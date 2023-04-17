@@ -15,8 +15,9 @@ block content
       tbody
         each book in search
           tr
-            //-td= book.title
-            //-td= book.writer 
+            
+           
             td
-              a(href=`/books/book/${book.idbook}`)
+              a(href=`/book/${book.idbook}`)
                 img(src=`/img/${book.book_cover}`, class="book-cover")
+            

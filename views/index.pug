@@ -1,53 +1,55 @@
 extends layout
 
+  
 block content
-    link(rel="stylesheet", href="/style.css") 
-    h1= title 
-    strong BookTinder
-    p Para los amantes de a lectura 
-    form(action="/search", method="get" id="search-form")
-        label(for="search-text")
-        input(type="text", name="search-text", id="search-text", placeholder="Buscar libro")
-        input(type="submit", value="Buscar", class="btn")  
-     
-    section#rules 
-        img(src="img/prototipo.jpg", alt="Reglas de intercambio de libros",width="100%", height="200%")
+//- block content
+//-     link(rel="stylesheet", href="/style.css") 
+//-     h1= title 
+//-     strong BookTinder
+//-     p Para los amantes de a lectura 
+//-     form(action="/search", method="get" id="search-form")
+//-         label(for="search-text")
+//-         input(type="text", name="search-text", id="search-text", placeholder="Buscar libro")
+//-         input(type="submit", value="Buscar", class="btn")  
+    
+//-     section(class="rules") 
+//-         img(src="img/prototipo.jpg", alt="Reglas de intercambio de libros",width="100%", height="28%")
     
     
-    img(src= "img/book.png", alt="")
-   
-        
-    section(class="carousel-container")
-        div.carousel
-        div.carousel-item
-            a(href="https://es.wikipedia.org/wiki/Orgullo_y_prejuicio")
-                img(src="img/Orgullo.jpg", alt="Portada libro Orgullo y Perjuicio", width="150px", height="250px")
-        br
-        div(class="button")
-            button.disponible Disponible
-                a(href="/chat-js/src/public/chat.htm")
-                button.boton-azul Chat
+//-     img(src= "img/book.png", alt="")
 
-        div(class="carousel-item")
-            a(href="https://es.wikipedia.org/wiki/El_pr%C3%ADncipe_de_la_niebla")
-                img(src="img/Niebla zafon.jpg", alt="Portada libro El príncipe de la Niebla", width="150px", height="250px")
-        br
-        div(class="button")
-            button.disponible Disponible
-        div(class="carousel-item")
-            a(href="https://es.wikipedia.org/wiki/El_perfume")
-                img(src="img/Perfume.jpg", alt="Portada libro El perfume", width="150px", height="250px")
-        br
-        div(class="button")
-            button.disponible Disponible
-        div(class="carousel-item")
-            a(href="https://es.wikipedia.org/wiki/Los_juegos_del_hambre")
-                img(src="img/Hambre.jpg", alt="Portada libro Los juegos del hambre", width="150px", height="250px")
-        br
-        div(class="button")
-            button.disponible Disponible
-        br
-        section(class="carousel-nav")
-            button.prev-btn <
-            button.next-btn >
-        script(src="carousel.js")
+        
+//-     section(class="carousel-container")
+//-         div.carousel
+//-         div.carousel-item
+//-             a(href="https://es.wikipedia.org/wiki/Orgullo_y_prejuicio")
+//-                 img(src="img/Orgullo.jpg", alt="Portada libro Orgullo y Perjuicio", width="150px", height="250px")
+//-         br
+//-         div(class="button")
+//-             button.disponible Disponible
+//-                 a(href="/chat-js/src/public/chat.htm")
+//-                 button.boton-azul Chat
+
+//-         div(class="carousel-item")
+//-             a(href="https://es.wikipedia.org/wiki/El_pr%C3%ADncipe_de_la_niebla")
+//-                 img(src="img/Niebla zafon.jpg", alt="Portada libro El príncipe de la Niebla", width="150px", height="250px")
+//-         br
+//-         div(class="button")
+//-             button.disponible Disponible
+//-         div(class="carousel-item")
+//-             a(href="https://es.wikipedia.org/wiki/El_perfume")
+//-                 img(src="img/Perfume.jpg", alt="Portada libro El perfume", width="150px", height="250px")
+//-         br
+//-         div(class="button")
+//-             button.disponible Disponible
+//-         div(class="carousel-item")
+//-             a(href="https://es.wikipedia.org/wiki/Los_juegos_del_hambre")
+//-                 img(src="img/Hambre.jpg", alt="Portada libro Los juegos del hambre", width="150px", height="250px")
+//-         br
+//-         div(class="button")
+//-             button.disponible Disponible
+//-         br
+//-         section(class="carousel-nav")
+//-             button.prev-btn <
+//-             button.next-btn >
+//-         script(src="carousel.js")

@@ -1,43 +1,55 @@
 import passport from "passport";
+import Book from "../models/book.js";
 
+const isAuthorized = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  req.session.returnTo = req.originalUrl;
+  res.redirect("/login");
+};
 
-const isAuthorized = (req,res,next) =>{
-    if(req.isAuthenticated()){
-        return next();
-    }
-    req.session.returnTo = req.originalUrl;
-    res.redirect("/login");
-}
+const isAdmin = (req, res, next) => {
+  if (req.isAuthenticated() && req.user.role === "admin") {
+    return next();
+  }
+  req.session.returnTo = req.originalUrl;
+  res.redirect("/login");
+};
 
+const isAdminOrOwner = async (req, res, next) => {
+  const idbook = req.params.id;
+  const book = await Book.findByPk(idbook);
+  if (
+    req.isAuthenticated() &&
+    (req.user.role === "admin" || book.username === req.user.username)
+  ) {
+    return next();
+  }
+  req.session.returnTo = req.originalUrl;
+  res.redirect("/login");
+};
 
-const isAdmin = (req,res,next) =>{
-    if(req.isAuthenticated() && req.user.role === "admin"){
-        return next();
-    }
-    req.session.returnTo = req.originalUrl;
-    res.redirect("/login");
-}
-
-
-const authenticate = (req,res,next) =>{
-    const returnTo = req.session.returnTo || "/";
-    passport.authenticate("local", { failureRedirect: "/login", keepSessionInfo:true }, (err,user,info) => {
-        if(err){
-            return next(err);
+const authenticate = (req, res, next) => {
+  const returnTo = req.session.returnTo || "/";
+  passport.authenticate(
+    "local",
+    { failureRedirect: "/login", keepSessionInfo: true },
+    (err, user, info) => {
+      if (err) {
+        return next(err);
+      }
+      if (!user) {
+        return res.redirect("/login");
+      }
+      req.logIn(user, (err) => {
+        if (err) {
+          return next(err);
         }
-        if (!user) {
-            return res.redirect("/login");
-        }
-        req.logIn(user, (err) =>{
-            if(err){
-                return next(err);
-            }
-            return res.redirect(returnTo);
-        });
-    })(req,res,next);
-}
+        return res.redirect(returnTo);
+      });
+    }
+  )(req, res, next);
+};
 
-export {isAuthorized,isAdmin,authenticate};
-
-
-
+export { isAuthorized, isAdmin, authenticate, isAdminOrOwner };

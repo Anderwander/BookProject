@@ -1,11 +1,10 @@
-extend ../layout
+extends ../layout
 
 block content
-    link(rel="stylesheet", href="/style.css")
-    h2 Crear un libro
+    h2 Sube un libro
     if error
         p=error
-    form(action="/books" method="POST", enctype="multipart/form-data")
+    form(action="/" method="POST", enctype="multipart/form-data", class="formNewBook")
         label(for="title") Titulo
         input(type="text" name="title" id="title" required)
         br
@@ -19,8 +18,8 @@ block content
         input(type="file" name="book_cover" id="book_cover")
         br
         input(type="submit", value="Añadir libro", class="btn")
-    a(href="/books")
-        button Volver 
+    //- a(href="/books")
+    //-     button Volver 
         //-label(for="synopsis") Sinopsis 
         //-input(type="text" name="synopsis" id="synopsis" required)
         //-br

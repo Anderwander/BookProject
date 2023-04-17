@@ -1,15 +1,15 @@
-extends ../layout
+//- extends ../layout
 
-block content
-  h1 Mis Libros Favoritos
-  ul
-    each book in user.favoriteBooks
-      li
-        h2= book.title
-        h2= writer
-        img(src=`/img/${book.book_cover}`)
-        form(method='post', action=`/users/${iduser}/favorites/${idbook}/remove`)
+//- block content
+//-   h1 Mis Libros Favoritos
+//-   ul
+//-     each book in user.favoriteBooks
+//-       li
+//-         h2= book.title
+//-         h2= writer
+//-         img(src=`/img/${book.book_cover}`)
+//-         form(method='post', action=`/users/${iduser}/favorites/${idbook}/remove`)
 
-          input(type="submit", value="Eliminar de favoritos", class="btn")
-  a(href="/books")
-    button Volver a libros
+//-           input(type="submit", value="Eliminar de favoritos", class="btn")
+//-   a(href="/books")
+//-     button Volver a libros
