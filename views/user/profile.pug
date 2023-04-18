@@ -6,22 +6,22 @@ block content
     a(href="/new")
         button Añadir un libro
         
-    section
-        h3(id="librosFav") Libros favoritos 
-        table(class="table table.striped", id="books")
-            thead    
+    //- section
+    //-     h3(id="librosFav") Libros favoritos 
+    //-     table(class="table table.striped", id="books")
+    //-         thead    
             
-            if user.favorites.length >0
+    //-         if user.favorites.length >0
                 
-                    each book in user.favorites
-                        tr
-                            td 
-                                a(href=`/book/${book.idbook}`)
-                                    img(src=`/img/${book.book_cover}`, class="book-cover")
-                                form(action=`/favs/${user.username}/favs/${book.idbook}/remove`, method="post")
-                                    input(type="submit", value="Eliminar", class="btnBookOption")
-            else
-                p No se han añadido libros favoritos
+    //-                 each book in user.favorites
+    //-                     tr
+    //-                         td 
+    //-                             a(href=`/book/${book.idbook}`)
+    //-                                 img(src=`/img/${book.book_cover}`, class="book-cover")
+    //-                             form(action=`/favs/${user.username}/favs/${book.idbook}/remove`, method="post")
+    //-                                 input(type="submit", value="Eliminar", class="btnBookOption")
+    //-         else
+    //-             p No se han añadido libros favoritos
 
     section
         h3 Mis libros

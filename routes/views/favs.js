@@ -16,7 +16,7 @@ router.post("/:username/favs/:idbook/add", isAuthorized, (req, res) => {
     .addFavorite(req, res)
 
     .then(() => {
-      res.redirect(`/users/user/profile/${req.params.username}`);
+      res.redirect(`/`);
     })
     .catch((error) => {
       console.error(error);
@@ -30,7 +30,7 @@ router.post("/:username/favs/:idbook/remove", isAdminOrOwner, (req, res) => {
   favsController
     .removeFavorite(req, res)
     .then(() => {
-      res.redirect(`/users/user/profile/${req.user.username}`);
+      res.redirect(`/favs/user/favs`);
     })
     .catch((error) => {
       console.error(error);
